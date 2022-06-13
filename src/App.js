@@ -1,18 +1,24 @@
-import React from "react";
+import React, {useContext} from "react";
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import EventPage from "./pages/EventPage";
 import UserProfile from "./pages/UserProfile";
 import './App.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {AuthContext} from "./context/AuthContext";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 
 function App() {
+
+    const {isAuth} = useContext(AuthContext)
+
     return (
         <Router>
             <NavBar/>
 
-            <switch>
+            <Switch>
                 <Route exact path="/">
                     <HomePage/>
                 </Route>
@@ -22,9 +28,19 @@ function App() {
                 </Route>
 
                 <Route exact path="/user">
-                    <UserProfile/>
+                    {isAuth ?
+                        <UserProfile/> : <div/>
+                    }
                 </Route>
-            </switch>
+
+                <Route exact path="/signin">
+                    <SignIn/>
+                </Route>
+                <Route exact path="/signup">
+                    <SignUp/>
+                </Route>
+
+            </Switch>
         </Router>
     );
 }
