@@ -6,6 +6,8 @@ function EventPage() {
         <div className="page-container">
             <PageHeader title="event"/>
 
+            <h2>CREATE NEW EVENT</h2>
+
             <p>DIT IS DE EVENTPAGE</p>
         </div>
     )

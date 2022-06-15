@@ -1,11 +1,11 @@
 import React, {useContext} from "react";
-import {Link, NavLink, useHistory} from "react-router-dom";
-import logo from "../assets/decalcenter-small.png";
+import {Link, NavLink} from "react-router-dom";
+import logo from "../assets/decalcenter.png";
 import {AuthContext} from "../context/AuthContext";
 
 function NavBar() {
 
-    const history = useHistory();
+    // const history = useHistory();
     const {isAuth, userLogOutFunction, userLogInFunction} = useContext(AuthContext);
     console.log({isAuth})
 
@@ -14,9 +14,11 @@ function NavBar() {
 
             <div className="nav-container">
                 <Link to="/">
-                <span className="logo-container">
-                    <img src={logo} alt="logo"/>
-                </span>
+
+                    <img src={logo}
+                         alt="logo"
+                    className="decalcenterlogo"/>
+
                 </Link>
 
                 <ul>
@@ -29,31 +31,47 @@ function NavBar() {
                     </li>
 
                     <li>
-                        <NavLink to="/user" exact activeClassName="active-link">Profile</NavLink>
+                        {isAuth ?
+                        <NavLink to="/user" exact activeClassName="active-link">Profile</NavLink> :
+                            <NavLink to="/signup" exact activeClassName="active-link">Create Profile</NavLink>}
+                    </li>
+                    <li>
+                        {isAuth ? <NavLink
+                            to="/"
+                            onClick={userLogOutFunction}>
+                            Log out
+                        </NavLink> :
+                            <NavLink
+                                to="/user"
+                                onClick={userLogInFunction}
+                                //  onClick={() => history.push('/signin')}
+                            >
+                                Log in
+                            </NavLink>}
                     </li>
                 </ul>
 
 
-                {isAuth ? <button
-                    type="button"
-                    onClick={userLogOutFunction}>
-                    Log out
-                </button> : <div>
-                    <button
-                        type="button"
-                        onClick={userLogInFunction}
-                        //  onClick={() => history.push('/signin')}
-                    >
-                        Log in
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => history.push('/signup')}
-                    >
-                        Registreren
-                    </button>
+                {/*{isAuth ? <button*/}
+                {/*    type="button"*/}
+                {/*    onClick={userLogOutFunction}>*/}
+                {/*    Log out*/}
+                {/*</button> : <div>*/}
+                {/*    <button*/}
+                {/*        type="button"*/}
+                {/*        onClick={userLogInFunction}*/}
+                {/*        //  onClick={() => history.push('/signin')}*/}
+                {/*    >*/}
+                {/*        Log in*/}
+                {/*    </button>*/}
+                {/*    <button*/}
+                {/*        type="button"*/}
+                {/*        onClick={() => history.push('/signup')}*/}
+                {/*    >*/}
+                {/*        Registreren*/}
+                {/*    </button>*/}
+                {/*</div>}*/}
 
-                </div>}
             </div>
         </nav>
     )

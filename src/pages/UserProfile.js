@@ -8,7 +8,9 @@ function UserProfile() {
         <div className="page-container">
             <PageHeader icon={user} title="user"/>
 
-            <p>DIT IS DE USERPAGE</p>
+            <h2>Welcome!</h2>
+
+            <p>In the overview below you'll find information about upcoming events and brands that may be interesting for you!</p>
 
             <p>Terug naar de <Link to="/">Homepagina</Link></p>
         </div>

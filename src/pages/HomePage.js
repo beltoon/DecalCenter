@@ -1,7 +1,7 @@
 import React from "react";
 import PageHeader from "../components/PageHeader";
 import logo from "../assets/box.png"
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 
 function HomePage() {
@@ -21,7 +21,11 @@ return (
             Ga naar een event!
         </button>
 
-        <p>ga naar je eigen <Link to="/user">profiel</Link></p>
+        <p>-----
+        Hier komen de decals/events incl. zoekfunctie -----</p>
+
+
+        {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}
     </div>
 );
 }
