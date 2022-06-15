@@ -31,9 +31,11 @@ function NavBar() {
                     </li>
 
                     <li>
-                        {isAuth ?
-                        <NavLink to="/user" exact activeClassName="active-link">Profile</NavLink> :
-                            <NavLink to="/signup" exact activeClassName="active-link">Create Profile</NavLink>}
+                        {isAuth &&
+                        <NavLink to="/user" exact activeClassName="active-link">Profile</NavLink>
+                            // :
+                            // <NavLink to="/signup" exact activeClassName="active-link">Create Profile</NavLink>
+                        }
                     </li>
                     <li>
                         {isAuth ? <NavLink
