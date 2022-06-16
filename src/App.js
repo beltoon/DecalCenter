@@ -2,7 +2,9 @@ import React, {useContext} from "react";
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import DecalPage from "./pages/DecalPage";
+import EventOverview from "./pages/EventOverview";
 import EventPage from "./pages/EventPage";
+import CreateEvent from "./pages/CreateEvent";
 import UserProfile from "./pages/UserProfile";
 import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
@@ -25,11 +27,19 @@ function App() {
                     <HomePage/>
                 </Route>
 
-                <Route exact path="/decal">
+                <Route exact path="/decal/:id">
                     <DecalPage/>
                 </Route>
 
                 <Route exact path="/events">
+                    <EventOverview/>
+                </Route>
+
+                <Route exact path="/events/create">
+                    <CreateEvent/>
+                </Route>
+
+                <Route exact path="/events/:id">
                     <EventPage/>
                 </Route>
 

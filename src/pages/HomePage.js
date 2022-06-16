@@ -1,7 +1,6 @@
 import React from "react";
 import PageHeader from "../components/PageHeader";
 import SearchBar from "../components/SearchBar";
-// import SearchBar2 from "../components/SearchBar2";
 import logo from "../assets/box.png"
 import {useHistory} from "react-router-dom";
 import "./homePage.css";
