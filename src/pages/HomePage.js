@@ -20,28 +20,22 @@ function HomePage() {
 
     console.log(carList)
 
-            return (
-            <div className="page-container">
-                <PageHeader icon={logo} title="DecalCenter"/>
-                <p>DIT IS DE HOMEPAGE</p>
+    return (
+        <div className="page-container">
+            <PageHeader icon={logo} title="DecalCenter"/>
+            <p>DIT IS DE HOMEPAGE</p>
 
-                <button type="button" onClick={handleClick}>
-                    Ga naar een event!
-                </button>
+            <button type="button" onClick={handleClick}>
+                Ga naar een event!
+            </button>
 
-                <p>-----
-                    Hier komen de decals/events incl. zoekfunctie -----</p>
+            <p>-----
+                Hier komen de decals/events incl. zoekfunctie -----</p>
 
-                {/*ZOEKFUNCTIE*/}
+            <SearchBar placeholder="Search For a Car..." data={carList}/>
 
-                <SearchBar placeholder="Search For a Car..." data={carList}/>
-
-                {/*<SearchBar2 placeholder="Enter car here..." data={Cars}/>*/}
-
-
-                {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}
-            </div>
-            );
-            }
-
-            export default HomePage;
+            {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}
+        </div>
+    );
+}
+export default HomePage;

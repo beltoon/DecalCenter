@@ -30,7 +30,6 @@ function SearchBar({placeholder, data}) {
         setQuery("");
     };
 
-
     return (
 
         <div className="search">
@@ -64,26 +63,5 @@ function SearchBar({placeholder, data}) {
         </div>
     );
 }
-
-//
-// {/*<ul>*/}
-// {/*    {Cars.filter((asd) =>*/}
-// {/*        asd.car_name.toLowerCase().includes(query)*/}
-// {/*    ).map((cars) => (*/}
-// {/*        <li key={cars.ID}*/}
-// {/*            className="ListItem"*/}
-// {/*        >*/}
-// {/*            {query.length !== 0 && (*/}
-// {/*            <div className="dataResult">*/}
-// {/*            /!*<a className="dataItem" href=""><p>{cars.car_name}</p></a>*!/*/}
-// {/*            <p>{cars.car_name}</p>*/}
-// {/*            </div>*/}
-// {/*                )}*/}
-//
-//
-// {/*        </li>*/}
-// {/*    ))}*/}
-// {/*</ul>*/}
-
 
 export default SearchBar;
