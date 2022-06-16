@@ -1,9 +1,11 @@
 import React from "react";
 import PageHeader from "../components/PageHeader";
 import SearchBar from "../components/SearchBar";
+// import SearchBar2 from "../components/SearchBar2";
 import logo from "../assets/box.png"
 import {useHistory} from "react-router-dom";
 import "./homePage.css";
+import {Cars} from "../test/Cars";
 
 
 function HomePage() {
@@ -14,27 +16,32 @@ function HomePage() {
         history.push("/events");
     }
 
+    const carList = [...new Set(Cars.map((Val) => Val.car_name))]
 
-    return (
-        <div className="page-container">
-            <PageHeader icon={logo} title="DecalCenter"/>
-            <p>DIT IS DE HOMEPAGE</p>
+    console.log(carList)
 
-            <button type="button" onClick={handleClick}>
-                Ga naar een event!
-            </button>
+            return (
+            <div className="page-container">
+                <PageHeader icon={logo} title="DecalCenter"/>
+                <p>DIT IS DE HOMEPAGE</p>
 
-            <p>-----
-                Hier komen de decals/events incl. zoekfunctie -----</p>
+                <button type="button" onClick={handleClick}>
+                    Ga naar een event!
+                </button>
 
-            {/*ZOEKFUNCTIE*/}
+                <p>-----
+                    Hier komen de decals/events incl. zoekfunctie -----</p>
 
-            <SearchBar/>
+                {/*ZOEKFUNCTIE*/}
+
+                <SearchBar placeholder="Search For a Car..." data={carList}/>
+
+                {/*<SearchBar2 placeholder="Enter car here..." data={Cars}/>*/}
 
 
-            {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}
-        </div>
-    );
-}
+                {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}
+            </div>
+            );
+            }
 
-export default HomePage;
+            export default HomePage;
