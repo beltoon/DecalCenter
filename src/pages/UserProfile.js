@@ -1,8 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom";
-import "./userProfile.css";
+import "./UserProfile.css";
+import ContentBlock from "../components/ContentBlock";
+import {AuthContext} from "../context/AuthContext";
 
 function UserProfile() {
+
+    const { userLogOutFunction } = useContext(AuthContext);
+
     return (
         <div className="page-container">
             <div className="welcome">
@@ -13,7 +18,9 @@ function UserProfile() {
                 <br/>
                 <div className="buttons">
 
-                    <button>Logout</button>
+                    <button
+                        to="/"
+                    onClick={userLogOutFunction}>Logout</button>
                     <button>Delete Account</button>
                 </div>
 
@@ -27,6 +34,8 @@ function UserProfile() {
             <p>Visit the <Link to="/">HOME PAGE</Link> for the latest content</p>
 
             <h1>Favorite brands</h1>
+
+            <ContentBlock/>
 
             <p>In the overview below you'll find information about upcoming events and brands that may be interesting
                 for you!</p>

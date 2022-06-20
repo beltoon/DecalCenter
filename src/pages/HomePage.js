@@ -5,6 +5,7 @@ import logo from "../assets/box.png"
 import {useHistory} from "react-router-dom";
 import "./homePage.css";
 import {Cars} from "../test/Cars";
+import ContentBlock from "../components/ContentBlock";
 
 
 function HomePage() {
@@ -21,8 +22,11 @@ function HomePage() {
 
     return (
         <div className="page-container">
+            <SearchBar placeholder="Search For a Car..." data={carList}/>
             <PageHeader icon={logo} title="DecalCenter"/>
             <p>DIT IS DE HOMEPAGE</p>
+
+
 
             <button type="button" onClick={handleClick}>
                 Upload een decal!
@@ -31,7 +35,8 @@ function HomePage() {
             <p>-----
                 Hier komen de decals/events incl. zoekfunctie -----</p>
 
-            <SearchBar placeholder="Search For a Car..." data={carList}/>
+            <ContentBlock/>
+
 
             {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}
         </div>
