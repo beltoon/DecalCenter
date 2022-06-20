@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import DecalPage from "./pages/DecalPage";
+import UploadDecal from "./pages/UploadDecal"
 import EventOverview from "./pages/EventOverview";
 import EventPage from "./pages/EventPage";
 import CreateEvent from "./pages/CreateEvent";
@@ -25,6 +26,10 @@ function App() {
             <Switch>
                 <Route exact path="/">
                     <HomePage/>
+                </Route>
+
+                <Route exact path="/decal">
+                    <UploadDecal/>
                 </Route>
 
                 <Route exact path="/decal/:id">

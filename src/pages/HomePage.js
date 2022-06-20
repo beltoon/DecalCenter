@@ -12,7 +12,7 @@ function HomePage() {
     const history = useHistory();
 
     function handleClick() {
-        history.push("/events");
+        history.push("/decal");
     }
 
     const carList = [...new Set(Cars.map((Val) => Val.car_name))]
@@ -25,7 +25,7 @@ function HomePage() {
             <p>DIT IS DE HOMEPAGE</p>
 
             <button type="button" onClick={handleClick}>
-                Ga naar een event!
+                Upload een decal!
             </button>
 
             <p>-----

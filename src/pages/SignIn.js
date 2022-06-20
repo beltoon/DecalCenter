@@ -8,6 +8,7 @@ function SignIn() {
 
     return (
         <>
+            <div className="page-container">
             <h1>Inloggen</h1>
             <p>Hier kan je inloggen</p>
 
@@ -20,6 +21,7 @@ function SignIn() {
             </form>
 
             <p>Heb je nog geen account? <Link to="/signup">Registreer</Link> je dan eerst.</p>
+            </div>
         </>
     );
 }
