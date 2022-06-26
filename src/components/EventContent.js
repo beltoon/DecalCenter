@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import axios from "axios";
 import './Content.css';
-import placeholder from "../assets/placeholder300x200.png"
+import placeholder from "../assets/placeholder300x200.png";
 
-function Content( {endpoint} ) {
+function EventContent( {endpoint} ) {
     const [content, setContent] = useState(null);
 
     useEffect(() => {
@@ -21,8 +21,6 @@ function Content( {endpoint} ) {
         fetchData();
     }, [endpoint]);
 
-
-
     return (
         <section className="content-card">
             {content &&
@@ -31,15 +29,16 @@ function Content( {endpoint} ) {
                     <img
                         alt="afbeelding decal"
                         src={placeholder}/>
-                    <h2>{content.brand}</h2>
-                    <h3>{content.name}</h3>
-                    <h4>{content.category}</h4>
+                    <h2>{content.name}</h2>
+                    <h3>{content.eventDate}</h3>
+
                 </>
-            //h3 = car model
+                //h3 = car model
 
             }
         </section>
     );
 }
 
-export default Content;
+export default EventContent;
+
