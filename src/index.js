@@ -7,6 +7,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthContext from "./context/AuthContext";
 
+
+
 const customHistory = createBrowserHistory();
 
 ReactDom.render(

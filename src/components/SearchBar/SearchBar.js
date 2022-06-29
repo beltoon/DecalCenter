@@ -12,7 +12,12 @@ function SearchBar({placeholder, data}) {
     const handleFilter = (e) => {
         const searchWord = e.target.value;
         setQuery(searchWord);
-        const newFilter = data.filter((value) => {
+
+        const dataName = data.map((item) => {
+        return item.name;
+        })
+
+        const newFilter = dataName.filter((value) => {
             return value.toLowerCase().includes(searchWord.toLowerCase());
         });
 
@@ -22,8 +27,6 @@ function SearchBar({placeholder, data}) {
             setFilteredData(newFilter);
         }
     };
-
-    console.log(query)
 
     const clearInput = () => {
         setFilteredData([]);
@@ -49,15 +52,17 @@ function SearchBar({placeholder, data}) {
                 </div>
             </div>
 
-            {filteredData.length !== 0 && (
-                <div className="dataResult">
-                    {filteredData.map((value, key) => {
-                        return (
-                            <a href="/events" key={key} className="dataItem">
-                                <p>{value}</p></a>
 
-                        );
-                    })}
+                    {filteredData.length !== 0 && (
+                        <div className="dataResult">
+                            {filteredData.map((value, key) => {
+                                return (
+                                    <a href={"/cars"} key={key} className="dataItem">
+                                        {/*<a href={`/events`} key={key} className="dataItem">*/}
+                                        <p>{value}</p></a>
+
+                                );
+                            })}
                 </div>
             )}
         </div>

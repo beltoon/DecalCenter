@@ -11,16 +11,27 @@ function Content( {endpoint} ) {
 
         async function fetchData() {
             try {
-                const {data} = await axios.get(endpoint);
-                setContent(data);
+                const response = await axios.get(endpoint);
+                setContent(response.data);
+                console.log("test CONTENT PAGE")
             } catch (e) {
                 console.error(e)
             }
         }
+        //
+        // async function fetchData() {
+        //     try {
+        //         const {data} = await axios.get(endpoint);
+        //         setContent(data);
+        //     } catch (e) {
+        //         console.error(e)
+        //     }
+        // }
+
+
 
         fetchData();
     }, [endpoint]);
-
 
 
     return (

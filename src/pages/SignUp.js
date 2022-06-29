@@ -6,6 +6,7 @@ function SignUp() {
         <>
             <div className="page-container">
             <h1>Registreren</h1>
+
             <p>Registreer je hier</p>
             <form>
                 <p>*Invoervelden*</p>

@@ -22,19 +22,19 @@ function NavBar() {
                 </Link>
 
                 <ul>
-                    <li>
-                        <NavLink to="/" exact activeClassName="active-link">Home</NavLink>
-                    </li>
+                    {/*<li>*/}
+                    {/*    <NavLink to="/" exact activeClassName="active-link">Home</NavLink>*/}
+                    {/*</li>*/}
 
-                    <li>
-                        <NavLink to="/events" exact activeClassName="active-link">Events</NavLink>
-                    </li>
+                    {/*<li>*/}
+                    {/*    <NavLink to="/events" exact activeClassName="active-link">Events</NavLink>*/}
+                    {/*</li>*/}
 
                     <li>
                         {isAuth ?
                             <NavLink to="/user" exact activeClassName="active-link">Profile</NavLink>
                             :
-                            <NavLink to="/signup" exact activeClassName="active-link">Register</NavLink>
+                            <NavLink to="/signup" exact activeClassName="active-link">Create an account</NavLink>
                         }
                                         </li>
                     <li>
