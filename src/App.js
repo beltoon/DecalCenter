@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import HomePage from "./pages/HomePage";
 import DecalPage from "./pages/DecalPage";
 import UploadDecal from "./pages/UploadDecal"

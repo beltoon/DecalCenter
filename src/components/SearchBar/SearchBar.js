@@ -4,7 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 
 
-function SearchBar({placeholder, data}) {
+function SearchBar({placeholder, data, domain}) {
 
     const [filteredData, setFilteredData] = useState([]);
     const [query, setQuery] = useState("");
@@ -13,12 +13,8 @@ function SearchBar({placeholder, data}) {
         const searchWord = e.target.value;
         setQuery(searchWord);
 
-        const dataName = data.map((item) => {
-        return item.name;
-        })
-
-        const newFilter = dataName.filter((value) => {
-            return value.toLowerCase().includes(searchWord.toLowerCase());
+        const newFilter = data.filter((value) => {
+            return value.name.toLowerCase().includes(searchWord.toLowerCase());
         });
 
         if (searchWord === "") {
@@ -32,6 +28,8 @@ function SearchBar({placeholder, data}) {
         setFilteredData([]);
         setQuery("");
     };
+
+    const domainUrl = domain;
 
     return (
 
@@ -57,9 +55,8 @@ function SearchBar({placeholder, data}) {
                         <div className="dataResult">
                             {filteredData.map((value, key) => {
                                 return (
-                                    <a href={"/cars"} key={key} className="dataItem">
-                                        {/*<a href={`/events`} key={key} className="dataItem">*/}
-                                        <p>{value}</p></a>
+                                    <a href={domainUrl + value.id} key={value.id} className="dataItem">
+                                        <p>{value.name}</p></a>
 
                                 );
                             })}

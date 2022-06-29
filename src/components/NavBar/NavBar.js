@@ -1,7 +1,8 @@
 import React, {useContext} from "react";
 import {Link, NavLink} from "react-router-dom";
-import logo from "../assets/decalcenter.png";
-import {AuthContext} from "../context/AuthContext";
+import logo from "../../assets/decalcenter.png";
+import {AuthContext} from "../../context/AuthContext";
+import "./NavBar.css"
 
 function NavBar() {
 
@@ -21,7 +22,7 @@ function NavBar() {
 
                 </Link>
 
-                <ul>
+                <ul className>
                     {/*<li>*/}
                     {/*    <NavLink to="/" exact activeClassName="active-link">Home</NavLink>*/}
                     {/*</li>*/}

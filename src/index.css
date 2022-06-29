@@ -40,18 +40,3 @@ li:hover{
 .active-link {
   border-bottom: 2px solid white;
 }
-
-/*.nav-container img {*/
-/*  image-rendering: auto;*/
-/*  !*height: 500px;*!*/
-/*  !*fout hieronder*!*/
-/*  margin-top: 100px;*/
-/*  margin-right: 8px;*/
-/*}*/
-
-.decalcenterlogo {
-  display: unset;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-}

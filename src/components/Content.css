@@ -1,7 +1,7 @@
 .content-card {
 
     /*border: 1px solid black;*/
-    background: white;
+    /*background: white;*/
     border-radius: 4px;
     flex-grow: 1;
     flex-shrink: 0;
@@ -10,9 +10,5 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-h2, h3 {
- margin-block-start: 0.3em;
-    margin-block-end: 0.3em;
+    color: #282c34;
 }

@@ -1,15 +1,31 @@
 import React from "react";
-import PageHeader from "../components/PageHeader";
-import Content from "../components/Content";
 
-function DecalPage () {
-    return(
+
+function DecalPage() {
+    return (
         <div className="page-container">
-            <PageHeader title="decal"/>
+            <header className="header-container">
+                <h1>Welcome on the Decal page</h1>
+            </header>
+
+            <article className="article container">
+                <div>LINKS EEN AFBEELDING VAN DE DECAL</div>
+
+                <div>RECHTS INFORMATIE VAN DE DESBETREFFENDE DECAL
+                    <ul>
+                        <li>name
+                        </li>
+                        <li>creator
+                        </li>
+                        <li>decal position
+                        </li>
+                    </ul></div>
+            </article>
+
 
             <p>Dit is een decal page</p>
 
-            <Content endpoint={"http://localhost:8080/cars/1001"}/>
+
             {/*<Content endpoint={"https://pokeapi.co/api/v2/pokemon/ditto"}/>*/}
 
 

@@ -28,7 +28,7 @@ function UserProfile() {
 
             </div>
 
-                <h2>Welcome back [user]</h2>
+                <h2>Welcome back </h2>
             </div>
 
             <p>Visit the <Link to="/">HOME PAGE</Link> for the latest content</p>

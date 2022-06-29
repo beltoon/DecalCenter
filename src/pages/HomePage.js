@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
-import PageHeader from "../components/PageHeader";
+import PageHeader from "../components/PageHeader/PageHeader";
 import SearchBar from "../components/SearchBar/SearchBar";
-import logo from "../assets/box.png"
 import {useHistory} from "react-router-dom";
 import "./homePage.css";
-// import {Cars} from "../test/Cars";
+
 import ContentBlock from "../components/ContentBlock";
 import axios from "axios";
 
@@ -14,62 +13,47 @@ function HomePage() {
 
     const history = useHistory();
 
-    function handleClick() {
-        history.push("/decal");
-    }
+    // function handleClick() {
+    //     history.push("/register");
+    // }
 
-useEffect(() => {
-    async function fetchCars() {
-        try {
-            const response = await axios.get('http://localhost:8080/cars');
-            // console.log(response.data)
-            setCars(response.data)
-        } catch(e) {
-            console.error(e)
+    useEffect(() => {
+        async function fetchCars() {
+            try {
+                const response = await axios.get('http://localhost:8080/cars');
+                // console.log(response.data)
+                setCars(response.data)
+            } catch (e) {
+                console.error(e)
+            }
         }
-    }
 
-    fetchCars();
-}, []);
-
-    // const carData = cars.map((car) =>  {
-    //     // console.log(car)
-    //     return car;
-    // })
-    //
-    // const carIds = cars.map((car) => {
-    //     // console.log(car.id)
-    //     return car.id;
-    // })
-
-    // console.log(carData)
+        fetchCars();
+    }, []);
 
     return (
-        <div className="page-container">
-            <SearchBar placeholder="Search for a Car..." data={cars} />
-            {/*<SearchBar placeholder="Search For a Car..." data={carNames} link={carId}/>*/}
-            {/*<SearchBar placeholder="Search For a Car..." data={cars.map((car) => {*/}
-            {/*    return car.name*/}
-            {/*})}*/}
-            {/*           link={cars.map((car) => {*/}
-            {/*           return car.id})}/>*/}
-            <PageHeader icon={logo} title="DecalCenter"/>
-            <p>DIT IS DE HOMEPAGE</p>
+        <>
+            <div className="page-container">
+
+
+                <PageHeader page="Welcome on DecalCenter.com"
+                            intro="Decal Center provides custom car decals to iRacing. Designed by the brands and available for everyone to use. Find the decal of your favorite brand, located perfectly for you car!"/>
 
 
 
-            <button type="button" onClick={handleClick}>
-                Upload een decal!
-            </button>
-
-            <p>-----
-                Hier komen de decals/events incl. zoekfunctie -----</p>
-
-            <ContentBlock/>
+                <SearchBar placeholder="Search for a Car..." data={cars} domain={"/cars/"}/>
 
 
-            {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}
-        </div>
+                <p>-----
+                    Hier komen de decals/events incl. zoekfunctie -----</p>
+
+                <ContentBlock contentURL={"http://localhost:8080/decals"}/>
+
+
+                {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}
+            </div>
+        </>
     );
 }
+
 export default HomePage;
