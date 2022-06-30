@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 900px;
+    width: 1400px;
 }
 
 
@@ -25,24 +25,7 @@
     font-weight: 300;
 }
 
-table {
-    width: 100%;
-    margin: 50px 0px;
-    border-spacing: 15px;
-    color: #444;
-}
 
-tr {
-    margin-bottom: 20px;
-}
-
-th {
-    width: 250px;
-    text-align: left;
-    font-size: 20px;
-}
-
-td {
-    width: 250px;
-    font-size: 20px;
+.contentblock {
+    text-align: center;
 }

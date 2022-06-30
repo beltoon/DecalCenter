@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
 import SearchBar from "../components/SearchBar/SearchBar";
-import {useHistory} from "react-router-dom";
+// import {useHistory} from "react-router-dom";
 import "./homePage.css";
 
-import ContentBlock from "../components/ContentBlock";
+import ContentFrame from "../components/ContentFrame";
 import axios from "axios";
 
 
 function HomePage() {
     const [cars, setCars] = useState([])
 
-    const history = useHistory();
+    // const history = useHistory();
 
     // function handleClick() {
     //     history.push("/register");
@@ -36,7 +36,7 @@ function HomePage() {
             <div className="page-container">
 
 
-                <PageHeader page="Welcome on DecalCenter.com"
+                <PageHeader page="Welcome to DecalCenter"
                             intro="Decal Center provides custom car decals to iRacing. Designed by the brands and available for everyone to use. Find the decal of your favorite brand, located perfectly for you car!"/>
 
 
@@ -44,14 +44,13 @@ function HomePage() {
                 <SearchBar placeholder="Search for a Car..." data={cars} domain={"/cars/"}/>
 
 
-                <p>-----
-                    Hier komen de decals/events incl. zoekfunctie -----</p>
-
-                <ContentBlock contentURL={"http://localhost:8080/decals"}/>
-
+        <div className="contentblock">
+                <ContentFrame contentUrl={"http://localhost:8080/decals"}/>
+        </div>
 
                 {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}
             </div>
+
         </>
     );
 }

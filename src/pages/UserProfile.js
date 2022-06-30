@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import {Link} from "react-router-dom";
 import "./UserProfile.css";
-import ContentBlock from "../components/ContentBlock";
+import ContentFrame from "../components/ContentFrame";
 import {AuthContext} from "../context/AuthContext";
 
 function UserProfile() {
@@ -35,7 +35,7 @@ function UserProfile() {
 
             <h1>Favorite brands</h1>
 
-            <ContentBlock/>
+            <ContentFrame/>
 
             <p>In the overview below you'll find information about upcoming events and brands that may be interesting
                 for you!</p>

@@ -1,13 +1,20 @@
 .contentBox {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1000px;
+    max-width: 1400px;
     padding: 40px 0;
 }
 
 .content {
-    margin: 1rem 0;
+    display: inline-block;
+    text-shadow: #FFFFFF;
+    text-align: center;
+    height: 300px;
+    width: 400px;
+    background-color: green;
+    margin: 1rem 1rem;
     padding: 0.5rem;
     border-radius: 2rem;
 }
