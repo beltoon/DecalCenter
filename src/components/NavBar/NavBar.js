@@ -28,13 +28,6 @@ function NavBar() {
 />
                 </Link>
 
-               {/* <Link to="/">*/}
-
-               {/*     <img src={logo}*/}
-               {/*          alt="logo"*/}
-               {/*/>*/}
-
-               {/* </Link>*/}
 
                 <ul className="nav-item">
                     {/*<li>*/}
@@ -90,7 +83,9 @@ function NavBar() {
                 {/*</div>}*/}
 
             </div>
+            <div className="style1"/>
         </nav>
+
     )
 }
 

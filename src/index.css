@@ -4,6 +4,10 @@
   margin: 30px auto;
 }
 
+body{
+    margin: 0;
+}
+
 ul {
   list-style-type: none;
  }
