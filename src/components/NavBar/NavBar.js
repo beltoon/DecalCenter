@@ -3,6 +3,7 @@ import {Link, NavLink} from "react-router-dom";
 import logo from "../../assets/decalcenter.png";
 import {AuthContext} from "../../context/AuthContext";
 import "./NavBar.css"
+import HomeIcon from '@mui/icons-material/Home';
 
 function NavBar() {
 
@@ -13,16 +14,29 @@ function NavBar() {
     return (
         <nav>
 
+
+
+
             <div className="nav-container">
                 <Link to="/">
-
+                <HomeIcon
+                className="home-icon"/>
+                </Link>
+                <Link to="/">
                     <img src={logo}
                          alt="logo"
-                    className="decalcenterlogo"/>
-
+/>
                 </Link>
 
-                <ul className>
+               {/* <Link to="/">*/}
+
+               {/*     <img src={logo}*/}
+               {/*          alt="logo"*/}
+               {/*/>*/}
+
+               {/* </Link>*/}
+
+                <ul className="nav-item">
                     {/*<li>*/}
                     {/*    <NavLink to="/" exact activeClassName="active-link">Home</NavLink>*/}
                     {/*</li>*/}

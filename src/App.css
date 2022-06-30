@@ -8,6 +8,7 @@
   --secondary: #208cf1;
   --secondary-light: #FDF4F2;
   --black: #292929;
+  --grey: #4a4a4a;
   --white: #FFFFFF;
 }
 
@@ -34,6 +35,12 @@ h2 {
 
 h3 {
   font-size: 24px;
+  color: var(--grey);
+}
+
+
+ul, li {
+  list-style-type: none;
 }
 
 button {
