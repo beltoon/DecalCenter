@@ -51,15 +51,15 @@ function SearchBar({placeholder, data, domain}) {
             </div>
 
 
-                    {filteredData.length !== 0 && (
-                        <div className="dataResult">
-                            {filteredData.map((value, key) => {
-                                return (
-                                    <a href={domainUrl + value.id} key={value.id} className="dataItem">
-                                        <p>{value.name}</p></a>
+            {filteredData.length !== 0 && (
+                <div className="dataResult">
+                    {filteredData.map((value, key) => {
+                        return (
+                            <a href={domainUrl + value.id} key={value.id} className="dataItem">
+                                <p>{value.name}</p></a>
 
-                                );
-                            })}
+                        );
+                    })}
                 </div>
             )}
         </div>

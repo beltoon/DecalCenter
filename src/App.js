@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import NavBar from "./components/NavBar/NavBar";
 import HomePage from "./pages/HomePage";
 import DecalPage from "./pages/DecalPage";
-import UploadDecal from "./pages/UploadDecal"
+import UploadDecalPage from "./pages/UploadDecalPage"
 import EventOverview from "./pages/EventOverview";
 import EventPage from "./pages/EventPage";
 import CreateEvent from "./pages/CreateEvent";
@@ -29,7 +29,7 @@ function App() {
                 </Route>
 
                 <Route exact path="/upload-decal">
-                    <UploadDecal/>
+                    <UploadDecalPage/>
                 </Route>
 
                 <Route exact path="/decal/:id">
