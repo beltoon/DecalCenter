@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 // import {useHistory} from "react-router-dom";
 import "./homePage.css";
 
-import ContentFrame from "../components/ContentFrame";
+import DecalFrame from "../components/DecalFrame";
 import axios from "axios";
 
 
@@ -45,7 +45,7 @@ function HomePage() {
 
 
         <div className="contentblock">
-                <ContentFrame contentUrl={"http://localhost:8080/decals"}/>
+                <DecalFrame contentUrl={"http://localhost:8080/decals"}/>
         </div>
 
                 {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}

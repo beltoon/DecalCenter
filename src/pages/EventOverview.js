@@ -3,6 +3,7 @@ import PageHeader from "../components/PageHeader/PageHeader";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
 import SearchBar from "../components/SearchBar/SearchBar";
+import EventFrame from "../components/EventFrame";
 
 function EventOverview() {
 
@@ -29,7 +30,7 @@ function EventOverview() {
         fetchEvents();
     }, []);
 
-    console.log(setEvents)
+    // console.log(setEvents)
 
     return(
         <div className="page-container">
@@ -43,6 +44,8 @@ function EventOverview() {
 
 
             <p>HIER STAAN ALLE EVENTS</p>
+
+            <EventFrame/>
 
         </div>
     )

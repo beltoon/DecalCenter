@@ -31,8 +31,8 @@
 }
 
 .dataResult {
-    position: fixed;
-    top: 240px;
+    position: absolute;
+    top: 575px;
     margin-right: 50px;
     margin-top: 5px;
     width: 430px;

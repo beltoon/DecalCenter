@@ -28,7 +28,7 @@ function App() {
                     <HomePage/>
                 </Route>
 
-                <Route exact path="/decal">
+                <Route exact path="/upload-decal">
                     <UploadDecal/>
                 </Route>
 
