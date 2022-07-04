@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
 import SearchBar from "../components/SearchBar/SearchBar";
-// import {useHistory} from "react-router-dom";
 import "./homePage.css";
 
 import DecalFrame from "../components/DecalFrame";
