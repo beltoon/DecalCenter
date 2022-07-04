@@ -10,8 +10,8 @@ import UserProfile from "./pages/UserProfile";
 import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {AuthContext} from "./context/AuthContext";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
+import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage";
 
 
 
@@ -55,10 +55,10 @@ function App() {
                 </Route>
 
                 <Route exact path="/signin">
-                    <SignIn/>
+                    <SignInPage/>
                 </Route>
-                <Route exact path="/signup">
-                    <SignUp/>
+                <Route exact path="/register">
+                    <SignUpPage/>
                 </Route>
 
             </Switch>
