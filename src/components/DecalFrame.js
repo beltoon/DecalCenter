@@ -22,7 +22,7 @@ function DecalFrame() {
                 try {
                     const response = await axios.get('http://localhost:8080/decals');
                     setContent(response.data);
-                    console.log(response.data);
+                    // console.log(response.data);
                 } catch (e) {
                     console.error(e);
                     setError(true);
@@ -35,14 +35,14 @@ function DecalFrame() {
 
     )
     // console.log(contentList)
-
+    // console.log(content)
 
     return (
         <>
             <div className="contentBox"> </div>
         <h2>Check out the latest decals!!</h2>
 
-            {content.slice(0, 12).map((item) => {
+            {content.slice(0, 9).map((item) => {
                 return <section className="content" key={item.id}>
                     {/*<img alt="test"></img>*/}
 

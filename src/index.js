@@ -1,23 +1,22 @@
 import React from 'react';
 import ReactDom from "react-dom";
-import { Router} from "react-router-dom";
-import { createBrowserHistory } from "history";
+import {Router} from "react-router-dom";
+import {createBrowserHistory} from "history";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import AuthContext from "./context/AuthContext";
-
+import AuthContextProvider from "./context/AuthContext";
 
 
 const customHistory = createBrowserHistory();
 
 ReactDom.render(
     <React.StrictMode>
-        <AuthContext>
-            <Router history={customHistory}>
+        <Router history={customHistory}>
+            <AuthContextProvider>
                 <App/>
-            </Router>
-        </AuthContext>
+            </AuthContextProvider>
+        </Router>
     </React.StrictMode>,
     document.getElementById('root')
 );

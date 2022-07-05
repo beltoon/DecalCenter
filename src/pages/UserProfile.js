@@ -1,27 +1,30 @@
 import React, {useContext} from "react";
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 import "./UserProfile.css";
 import DecalFrame from "../components/DecalFrame";
 import {AuthContext} from "../context/AuthContext";
 
 function UserProfile() {
 
-    const { userLogOutFunction } = useContext(AuthContext);
+    // const { login, logout } = useContext(AuthContext);
+    const { user: { email } } = useContext(AuthContext);
+
+
 
     return (
         <div className="page-container">
             <div className="welcome">
             <div className="profile-card">
                 <img className="profile-image" src="https://i.imgur.com/bDLhJiP.jpg" alt="profile"/>
-                <h3 className="userName">Alexander Schmidt</h3>
+                <h3 className="userName">{email}</h3>
                 <span>User Role here</span>
                 <br/>
                 <div className="buttons">
 
-                    <button
-                        to="/"
-                    onClick={userLogOutFunction}>Logout</button>
-                    <button>Delete Account</button>
+                    {/*<button*/}
+                    {/*    to="/"*/}
+                    {/*onClick={logout}>Logout</button>*/}
+                    {/*<button>Delete Account</button>*/}
                 </div>
 
 
@@ -31,7 +34,7 @@ function UserProfile() {
                 <h2>Welcome back </h2>
             </div>
 
-            <p>Visit the <Link to="/">HOME PAGE</Link> for the latest content</p>
+            {/*<p>Visit the <Link to="/">HOME PAGE</Link> for the latest content</p>*/}
 
             <h1>Favorite brands</h1>
 

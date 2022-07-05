@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {Link, NavLink} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import logo from "../../assets/decalcenter.png";
 import {AuthContext} from "../../context/AuthContext";
 import "./NavBar.css"
@@ -7,8 +7,9 @@ import HomeIcon from '@mui/icons-material/Home';
 
 function NavBar() {
 
-    // const history = useHistory();
-    const {isAuth, userLogOutFunction, userLogInFunction} = useContext(AuthContext);
+
+    const {isAuth, logout} = useContext(AuthContext);
+    const history = useHistory();
     console.log({isAuth})
 
     return (
@@ -19,13 +20,13 @@ function NavBar() {
 
             <div className="nav-container">
                 <Link to="/">
-                <HomeIcon
-                className="home-icon"/>
+                    <HomeIcon
+                        className="home-icon"/>
                 </Link>
                 <Link to="/">
                     <img src={logo}
                          alt="logo"
-/>
+                    />
                 </Link>
 
 
@@ -40,24 +41,25 @@ function NavBar() {
 
                     <li>
                         {isAuth ?
-                            <NavLink to="/user" exact activeClassName="active-link">Profile</NavLink>
+                            <button type="button"
+                                    onClick={() => history.push('/user')}>Profile</button>
                             :
-                            <NavLink to="/signup" exact activeClassName="active-link">Create an account</NavLink>
+                            <button type="button"
+                                    onClick={() => history.push('/register')}>Create an account</button>
                         }
-                                        </li>
+                    </li>
                     <li>
-                        {isAuth ? <NavLink
-                            to="/"
-                            onClick={userLogOutFunction}>
-                            Log out
-                        </NavLink> :
-                            <NavLink
-                                to="/user"
-                                onClick={userLogInFunction}
-                                //  onClick={() => history.push('/signin')}
+                       {isAuth ? <button
+                                type="button"
+                                onClick={logout}>
+                                Log out
+                            </button> :
+                            <button
+                                type="button"
+                                onClick={() => history.push('/login')}
                             >
                                 Log in
-                            </NavLink>}
+                            </button>}
                     </li>
                 </ul>
 

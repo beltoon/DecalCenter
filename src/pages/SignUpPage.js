@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUp from "../components/auth/SignUp";
+import Register from "../components/auth/Register";
 
 function SignUpPage() {
     return (
@@ -7,7 +7,7 @@ function SignUpPage() {
             <div className="page-container">
 
 
-                <SignUp/>
+                <Register/>
 
 
             </div>

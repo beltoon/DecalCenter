@@ -13,7 +13,7 @@ function ImageRequestPage() {
     const [addSucces, toggleAddSuccess] = useState(false);
 
     const [cars, setCars] = useState([]);
-    const [id, setId] = useState('');
+    const [id, setId] = useState(1);
 
     function handleImageChange(e) {
         // Sla het gekozen bestand op

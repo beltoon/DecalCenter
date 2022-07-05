@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SignIn from "../components/auth/SignIn";
+import Login from "../components/auth/Login";
 
 function SignInPage() {
 
@@ -8,7 +8,7 @@ function SignInPage() {
         <>
             <div className="page-container">
 
-                <SignIn/>
+                <Login/>
 
             </div>
         </>

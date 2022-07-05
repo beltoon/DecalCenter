@@ -8,16 +8,16 @@ import EventPage from "./pages/EventPage";
 import CreateEvent from "./pages/CreateEvent";
 import UserProfile from "./pages/UserProfile";
 import './App.css';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import {AuthContext} from "./context/AuthContext";
-import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import SignInPage from "./pages/SignInPage";
 
 
 
 function App() {
 
-    const {isAuth} = useContext(AuthContext)
+    const { isAuth } = useContext(AuthContext)
 
     return (
         <Router>
@@ -49,12 +49,10 @@ function App() {
                 </Route>
 
                 <Route exact path="/user">
-                    {isAuth ?
-                        <UserProfile/> : <div/>
-                    }
+                    {isAuth ? <UserProfile/> : <Redirect to="/" />                    }
                 </Route>
 
-                <Route exact path="/signin">
+                <Route exact path="/login">
                     <SignInPage/>
                 </Route>
                 <Route exact path="/register">
