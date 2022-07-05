@@ -17,6 +17,13 @@ function Login() {
     const [success, setSuccess] = useState(false);
 
     const {login} = useContext(AuthContext);
+    // const source = axios.CancelToken.source();
+
+    // useEffect(() => {
+    //     return function cleanup() {
+    //         source.cancel();
+    //     }
+    // }, []);
 
     useEffect(() => {
         userRef.current.focus();
@@ -37,7 +44,11 @@ function Login() {
             const response = await axios.post(LOGIN_URL, {
                 username,
                 password,
-            });
+            },
+                // {
+                //     cancelToken: source.token,
+                // }
+                );
             console.log(response.data.jwt);
             login(response.data.jwt);
 

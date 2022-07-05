@@ -1,14 +1,44 @@
-import React, {useContext} from "react";
-// import {Link} from "react-router-dom";
+import React, {useContext, useEffect } from "react";
+
 import "./UserProfile.css";
 import DecalFrame from "../components/DecalFrame";
 import {AuthContext} from "../context/AuthContext";
 
+import axios from '../api/axios'
+const USER_URL = '/users'
+
 function UserProfile() {
+    // const [profileData, setProfileData] = useState({});
+    const { username } = useContext(AuthContext);
 
-    // const { login, logout } = useContext(AuthContext);
-    const { user: { email } } = useContext(AuthContext);
+    useEffect(() => {
+        const source = axios.CancelToken.source();
 
+        // we halen de pagina-content op in de mounting-cycle
+        async function fetchProfileData() {
+            // haal de token uit de Local Storage om in het GET-request te bewijzen dat we geauthoriseerd zijn
+            const token = localStorage.getItem('token');
+
+            try {
+                const result = await axios.get(USER_URL + `${username}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    cancelToken: source.token,
+                });
+                console.log(result.data)
+                // setProfileData(result.data);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+        fetchProfileData();
+
+        return function cleanup() {
+            source.cancel();
+        }
+    }, []);
 
 
     return (
@@ -16,7 +46,7 @@ function UserProfile() {
             <div className="welcome">
             <div className="profile-card">
                 <img className="profile-image" src="https://i.imgur.com/bDLhJiP.jpg" alt="profile"/>
-                <h3 className="userName">{email}</h3>
+                <h3 className="userName">{username}</h3>
                 <span>User Role here</span>
                 <br/>
                 <div className="buttons">
