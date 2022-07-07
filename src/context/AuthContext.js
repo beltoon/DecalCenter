@@ -1,15 +1,12 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { useHistory } from "react-router-dom";
+import React, {createContext, useEffect, useState} from 'react';
+import {useHistory} from "react-router-dom";
 import jwtDecode from "jwt-decode";
-
-
-import axios from '../api/axios';
-const LOGIN_USER_URL = `http://localhost:8080/users/`;
+import axios from 'axios';
+import isTokenValid from "../helpers/isTokenValid";
 
 export const AuthContext = createContext({});
 
 function AuthContextProvider({children}) {
-
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
         user: null,
@@ -17,14 +14,18 @@ function AuthContextProvider({children}) {
     });
     const history = useHistory();
 
-       useEffect(() => {
-             const token = localStorage.getItem('token');
 
-             if (token) {
+    useEffect(() => {
+
+        const token = localStorage.getItem("token");
+
+
+        if (token && isTokenValid(token)) {
             const decoded = jwtDecode(token);
-            fetchUserData(decoded.sub, token);
+            fetchUserData(decoded.sub, token, 'profile');
         } else {
-              toggleIsAuth({
+
+            toggleIsAuth({
                 isAuth: false,
                 user: null,
                 status: 'done',
@@ -33,11 +34,18 @@ function AuthContextProvider({children}) {
     }, []);
 
     function login(JWT) {
-        localStorage.setItem('token', JWT);
-        console.log(JWT);
-        const decodedToken = jwtDecode(JWT);
 
+        localStorage.setItem('token', JWT);
+
+        const decodedToken = jwtDecode(JWT);
+        console.log(decodedToken)
+
+        //redirect profile
         fetchUserData(decodedToken.sub, JWT, '/profile');
+
+        // history.push('/profile')
+
+
     }
 
     function logout() {
@@ -52,46 +60,48 @@ function AuthContextProvider({children}) {
         history.push('/');
     }
 
-async function fetchUserData(id, token, redirectUrl) {
 
-    try {
-        const result = await axios.get(LOGIN_USER_URL + `${id}`, {
-                    headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            },
-        });
-        console.log(result.data)
-        // zet de gegevens in de state
-        toggleIsAuth({
-            ...isAuth,
-            isAuth: true,
-            user: {
-                username: result.data.username,
-                email: result.data.email,
-                // id: result.data.id,
-            },
-            status: 'done',
-        });
+    async function fetchUserData(username, token, redirectUrl) {
+        try {
 
-        // als er een redirect URL is meegegeven (bij het mount-effect doen we dit niet) linken we hiernnaartoe door
-        // als we de history.push in de login-functie zouden zetten, linken we al door voor de gebuiker is opgehaald!
-        if (redirectUrl) {
-            history.push(redirectUrl);
+            const result = await axios.get(`http://localhost:8080/users/${username}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            // zet de gegevens in de state
+            toggleIsAuth({
+                ...isAuth,
+                isAuth: true,
+                user: {
+                    username: result.data.username,
+                    email: result.data.email,
+                    // id: result.data.id,
+                },
+                status: 'done',
+            });
+
+            // als er een redirect URL is meegegeven (bij het mount-effect doen we dit niet) linken we hiernnaartoe door
+            // als we de history.push in de login-functie zouden zetten, linken we al door voor de gebuiker is opgehaald!
+            // if (redirectUrl) {
+            //     history.push(redirectUrl);
+            // }
+
+        } catch (e) {
+            console.error(e);
+            // ging er iets mis? Plaatsen we geen data in de state
+            toggleIsAuth({
+                isAuth: false,
+                user: null,
+                status: 'done',
+            });
         }
-
-    } catch (e) {
-        console.error(e);
-        // ging er iets mis? Plaatsen we geen data in de state
-        toggleIsAuth({
-            isAuth: false,
-            user: null,
-            status: 'done',
-        });
     }
-}
 
     const contextData = {
+
         isAuth: isAuth.isAuth,
         user: isAuth.user,
         login: login,
@@ -104,6 +114,5 @@ async function fetchUserData(id, token, redirectUrl) {
         </AuthContext.Provider>
     );
 }
-
 
 export default AuthContextProvider;

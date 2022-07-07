@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import {AuthContext} from "../../context/AuthContext";
 import {Link} from "react-router-dom";
+import "./auth.css"
 
-import axios from '../../api/axios'
-const LOGIN_URL = '/authenticate'
+import axios from 'axios'
 
 
 function Login() {
@@ -14,16 +14,16 @@ function Login() {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    const [success, setSuccess] = useState(false);
+    const [success, setSuccess] = useState(false)
 
     const {login} = useContext(AuthContext);
-    // const source = axios.CancelToken.source();
+    const source = axios.CancelToken.source();
 
-    // useEffect(() => {
-    //     return function cleanup() {
-    //         source.cancel();
-    //     }
-    // }, []);
+    useEffect(() => {
+        return function cleanup() {
+            source.cancel();
+        }
+    }, [source]);
 
     useEffect(() => {
         userRef.current.focus();
@@ -33,25 +33,18 @@ function Login() {
         setErrorMessage('');
     }, [username, password])
 
-    useEffect(() => {
-        setErrorMessage('');
-    }, [username, password])
 
     async function handleSubmit(e) {
         e.preventDefault();
-
         try {
-            const response = await axios.post(LOGIN_URL, {
-                username,
-                password,
-            },
-                // {
-                //     cancelToken: source.token,
-                // }
-                );
-            console.log(response.data.jwt);
-            login(response.data.jwt);
-
+            const result = await axios.post('http://localhost:8080/authenticate', {
+                    username: username,
+                    password: password,
+                }, {
+                    cancelToken: source.token,
+                });
+            console.log(result.data);
+            login(result.data.jwt);
             setSuccess(true)
 
         } catch (e) {
@@ -71,53 +64,60 @@ function Login() {
     return (
         <>
             {success ? (
-                <section><h1>You are Logged in</h1></section>
+                <section>
+                    <h1>You are logged in!</h1>
+                    <br />
+
+                </section>
             ) : (
-        <section>
-
-            <h1>Inloggen</h1>
-
-
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">
-                    Username:
-                    <input
-                        type="username"
-                        id="username"
-                        name="username"
-                        ref={userRef}
-                        autoComplete="off"
-                        onChange={(e) => setUsername(e.target.value)}
-                        value={username}
-                        required
-                    />
-                </label>
-
-                <label htmlFor="password">
-                    Password:
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={password}
-                    />
-                </label>
-                <p ref={errRef} className={errorMessage ? "errmsg" : "offscreen"} aria-live="assertive">{errorMessage}</p>
+            <section>
+                <p ref={errRef} className={errorMessage ? "errormessage" : "offscreen"}
+                   aria-live="assertive">{errorMessage}</p>
+                <h1>Inloggen</h1>
 
 
-                <button
-                    type="submit"
-                    className="form-button"
-                >
-                    Log In
-                </button>
-            </form>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="username">
+                        Username:
+                        <input
+                            type="username"
+                            id="username"
+                            name="username"
+                            ref={userRef}
+                            autoComplete="off"
+                            onChange={(e) => setUsername(e.target.value)}
+                            value={username}
+                            required
+                        />
+                    </label>
 
-            <p>If you have no account, feel free to <Link to="/register">register here.</Link></p>
+                    <label htmlFor="password">
+                        Password:
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                            required
+                        />
+                    </label>
+                    <p ref={errRef} className={errorMessage ? "errmsg" : "offscreen"}
+                       aria-live="assertive">{errorMessage}</p>
 
-        </section>
-            )}
+
+                    <button
+                        type="submit"
+                        className="form-button"
+                    >
+                        Log In
+                    </button>
+                </form>
+
+                <p>If you have no account, feel free to <Link to="/register">register here.</Link></p>
+
+            </section>
+                )}
         </>
     );
 }

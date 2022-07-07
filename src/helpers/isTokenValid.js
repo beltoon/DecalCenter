@@ -8,14 +8,14 @@ function isTokenValid(jwtToken) {
     const nowInUnix = Math.round(now / 1000); // nu is het ook een UNIX timestamp
 
     // Als er nog seconden over zijn wanneer we "nu" aftrekken van de expiratiedatum is hij nog geldig
-    if (expirationUnix - nowInUnix > 0) {
-        return true;
-    } else {
-        return false;
-    }
+    // if (expirationUnix - nowInUnix > 0) {
+    //     return true;
+    // } else {
+    //     return false;
+    // }
 
     // bovenstaande if-statement kun je versimpelen tot:
-    // return expirationUnix - nowInUnix > 0;
+    return expirationUnix - nowInUnix > 0;
 }
 
 export default isTokenValid;

@@ -4,7 +4,7 @@ import "./ContentFrame.css"
 
 
 
-function EventFrame() {
+function EventFrame( {endpoint} ) {
     const [eventContent, setEventContent] = useState([]);
     // const [endpoint, setEndpoint] = useState([]);
     const [loading, toggleLoading] = useState(false);
@@ -20,9 +20,10 @@ function EventFrame() {
                 toggleLoading(true);
                 setError(false);
                 try {
-                    const response = await axios.get('http://localhost:8080/events');
+                    // const response = await axios.get('http://localhost:8080/events');
+                    const response = await axios.get(endpoint);
                     setEventContent(response.data);
-                    console.log(response.data);
+                    // console.log(response.data);
                 } catch (e) {
                     console.error(e);
                     setError(true);
@@ -31,10 +32,10 @@ function EventFrame() {
                 toggleLoading(false)
             }
             fetchData();
-        }, []
+        }, [endpoint]
 
     )
-
+    console.log(eventContent)
 
     return (
         <>

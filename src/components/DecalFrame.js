@@ -4,7 +4,7 @@ import "./ContentFrame.css"
 
 
 
-function DecalFrame() {
+function DecalFrame( {endpoint} ) {
     const [content, setContent] = useState([]);
     // const [endpoint, setEndpoint] = useState([]);
     const [loading, toggleLoading] = useState(false);
@@ -13,14 +13,13 @@ function DecalFrame() {
 
 
 
-    //ENDPOINT MOET NOG AANGEMAAKT WORDEN
-
     useEffect(() => {
             async function fetchData() {
                 toggleLoading(true);
                 setError(false);
                 try {
-                    const response = await axios.get('http://localhost:8080/decals');
+                    // const response = await axios.get('http://localhost:8080/decals');
+                    const response = await axios.get(endpoint);
                     setContent(response.data);
                     // console.log(response.data);
                 } catch (e) {
@@ -31,7 +30,7 @@ function DecalFrame() {
                 toggleLoading(false)
             }
             fetchData();
-        }, []
+        }, [endpoint]
 
     )
     // console.log(contentList)

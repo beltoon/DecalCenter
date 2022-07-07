@@ -14,10 +14,6 @@ function NavBar() {
 
     return (
         <nav>
-
-
-
-
             <div className="nav-container">
                 <Link to="/">
                     <HomeIcon

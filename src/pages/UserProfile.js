@@ -1,16 +1,15 @@
-import React, {useContext, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 
 import "./UserProfile.css";
 import DecalFrame from "../components/DecalFrame";
 import {AuthContext} from "../context/AuthContext";
 
-import axios from '../api/axios'
-const USER_URL = '/users'
+import axios from 'axios'
+
 
 function UserProfile() {
     // const [profileData, setProfileData] = useState({});
-    const { username } = useContext(AuthContext);
-
+    const { user: username } = useContext(AuthContext);
     useEffect(() => {
         const source = axios.CancelToken.source();
 
@@ -20,7 +19,7 @@ function UserProfile() {
             const token = localStorage.getItem('token');
 
             try {
-                const result = await axios.get(USER_URL + `${username}`, {
+                const result = await axios.get(`http://localhost:8080/users/${username}`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
@@ -46,7 +45,9 @@ function UserProfile() {
             <div className="welcome">
             <div className="profile-card">
                 <img className="profile-image" src="https://i.imgur.com/bDLhJiP.jpg" alt="profile"/>
-                <h3 className="userName">{username}</h3>
+                <h3 className="userName">
+                    {/*{username}*/}
+                </h3>
                 <span>User Role here</span>
                 <br/>
                 <div className="buttons">

@@ -1,10 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
-import axios from '../../api/axios';
-import "./Register.css"
+import "./auth.css"
+import {useHistory} from "react-router-dom";
+import axios from 'axios'
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register';
 
 function Register() {
     const userRef = useRef();
@@ -25,16 +25,18 @@ function Register() {
     const [matchFocus, setMatchFocus] = useState(false);
 
     const [errorMessage, setErrorMessage] = useState('');
-    // const source = axios.CancelToken.source();
+    const history = useHistory();
+    const source = axios.CancelToken.source();
 
-    // const [error, toggleError] = useState(false);
+    // state voor functionaliteit
+    const [error, toggleError] = useState(false);
     // const [loading, toggleLoading] = useState(false);
 
-    // useEffect(() => {
-    //     return function cleanup() {
-    //         source.cancel();
-    //     }
-    // }, []);
+    useEffect(() => {
+        return function cleanup() {
+            source.cancel();
+        }
+    }, [source]);
 
     useEffect(() => {
         userRef.current.focus();
@@ -56,35 +58,39 @@ function Register() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        toggleError(false);
         // if button enabled with JS hack
         const v1 = USER_REGEX.test(username);
         const v2 = PWD_REGEX.test(password);
         if (!v1 || !v2) {
             setErrorMessage("Invalid Entry");
             return;
+
+            // toggleLoading(true);
         }
         try {
-            const response = await axios.post(REGISTER_URL, {
-                email,
-                password,
-                username,
-            },
-            //     {
-            //     cancelToken: source.token,
-            // }
+            const response = await axios.post('http://localhost:8080/users', {
+                    email: email,
+                    password: password,
+                    username: username,
+                enabled: true,
+                },
+                {
+                    cancelToken: source.token,
+                }
             );
+            history.push('/login');
             console.log(response.data)
-            // console.log(response.jwt)
-            console.log(JSON.stringify(response))
 
 
             //clear state and controlled inputs
 
-            setUsername('');
-            setEmail('');
-            setPassword('');
-            setMatchPwd('');
+            // setUsername('');
+            // setEmail('');
+            // setPassword('');
+            // setMatchPwd('');
         } catch (e) {
+            toggleError(true);
             if (!e?.response) {
                 setErrorMessage('No Server Response');
             } else if (e.response?.status === 409) {
@@ -188,7 +194,7 @@ function Register() {
                             Must match the first password input field.
                         </p>
                     </label>
-                    {/*{error && <p className="error">An account has been registered on this e-mailadres</p>}*/}
+                    {error && <p className="error">An account has been registered on this e-mailadres</p>}
 
                     <button
                         disabled={!validName || !validPwd || !validMatch ? true : false}

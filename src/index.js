@@ -12,11 +12,11 @@ const customHistory = createBrowserHistory();
 
 ReactDom.render(
     <React.StrictMode>
-        <Router history={customHistory}>
-            <AuthContextProvider>
+        <AuthContextProvider>
+            <Router history={customHistory}>
                 <App/>
-            </AuthContextProvider>
-        </Router>
+            </Router>
+        </AuthContextProvider>
     </React.StrictMode>,
     document.getElementById('root')
 );

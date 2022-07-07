@@ -20,8 +20,8 @@ function HomePage() {
         async function fetchCars() {
             try {
                 const response = await axios.get('http://localhost:8080/cars');
-                // console.log(response.data)
                 setCars(response.data)
+                console.log(response.data)
             } catch (e) {
                 console.error(e)
             }
@@ -38,14 +38,11 @@ function HomePage() {
                 <PageHeader page="Welcome to DecalCenter"
                             intro="Decal Center provides custom car decals to iRacing. Designed by the brands and available for everyone to use. Find the decal of your favorite brand, located perfectly for you car!"/>
 
-
-
                 <SearchBar placeholder="Search for a Car..." data={cars} domain={"/cars/"}/>
 
-
-        <div className="contentblock">
-                <DecalFrame contentUrl={"http://localhost:8080/decals"}/>
-        </div>
+                <div className="contentblock">
+                    <DecalFrame endpoint={'http://localhost:8080/decals'}/>
+                </div>
 
                 {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}
             </div>
