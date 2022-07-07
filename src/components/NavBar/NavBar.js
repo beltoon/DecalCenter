@@ -10,7 +10,9 @@ function NavBar() {
 
     const {isAuth, logout} = useContext(AuthContext);
     const history = useHistory();
-    console.log({isAuth})
+    // console.log({isAuth})
+
+    console.log(isAuth)
 
     return (
         <nav>
@@ -38,7 +40,7 @@ function NavBar() {
                     <li>
                         {isAuth ?
                             <button type="button"
-                                    onClick={() => history.push('/user')}>Profile</button>
+                                    onClick={() => history.push('/profile')}>Profile</button>
                             :
                             <button type="button"
                                     onClick={() => history.push('/register')}>Create an account</button>

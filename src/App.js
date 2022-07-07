@@ -5,6 +5,7 @@ import DecalPage from "./pages/DecalPage";
 import UploadDecalPage from "./pages/UploadDecalPage"
 import EventOverview from "./pages/EventOverview";
 import EventPage from "./pages/EventPage";
+import CarPage from "./pages/CarPage"
 import CreateEvent from "./pages/CreateEvent";
 import UserProfile from "./pages/UserProfile";
 import './App.css';
@@ -32,8 +33,12 @@ function App() {
                     <UploadDecalPage/>
                 </Route>
 
-                <Route exact path="/decal/:id">
+                <Route exact path="/decals/:id">
                     <DecalPage/>
+                </Route>
+
+                <Route exact path="/cars/:id">
+                    <CarPage/>
                 </Route>
 
                 <Route exact path="/events">
@@ -48,7 +53,7 @@ function App() {
                     <EventPage/>
                 </Route>
 
-                <Route exact path="/user">
+                <Route exact path="/profile">
                     {isAuth ? <UserProfile/> : <Redirect to="/" />                    }
                 </Route>
 

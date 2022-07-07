@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import {AuthContext} from "../../context/AuthContext";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import "./auth.css"
 
 import axios from 'axios'
@@ -18,6 +18,8 @@ function Login() {
 
     const {login} = useContext(AuthContext);
     const source = axios.CancelToken.source();
+
+    const history = useHistory();
 
     useEffect(() => {
         return function cleanup() {
@@ -45,7 +47,8 @@ function Login() {
                 });
             console.log(result.data);
             login(result.data.jwt);
-            setSuccess(true)
+            setSuccess(true);
+            history.push('/profile');
 
         } catch (e) {
             if (!e?.response) {

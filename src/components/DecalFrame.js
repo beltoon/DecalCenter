@@ -3,14 +3,11 @@ import axios from 'axios';
 import "./ContentFrame.css"
 
 
-
-function DecalFrame( {endpoint} ) {
+function DecalFrame({endpoint}) {
     const [content, setContent] = useState([]);
     // const [endpoint, setEndpoint] = useState([]);
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(false);
-
-
 
 
     useEffect(() => {
@@ -29,26 +26,26 @@ function DecalFrame( {endpoint} ) {
 
                 toggleLoading(false)
             }
+
             fetchData();
         }, [endpoint]
-
     )
     // console.log(contentList)
     // console.log(content)
 
     return (
         <>
-            <div className="contentBox"> </div>
-        <h2>Check out the latest decals!!</h2>
+            <div className="contentBox"></div>
+            <h2>Check out the latest decals!!</h2>
 
             {content.slice(0, 9).map((item) => {
-                return <section className="content" key={item.id}>
+                return <section className="content" key={item.id}
+                >
                     {/*<img alt="test"></img>*/}
-
                     <h4>
 
                         {item.name}
-                        </h4>
+                    </h4>
                     <h4>{item.car.name}</h4>
                     <h5>
                         {item.company}
@@ -68,4 +65,5 @@ function DecalFrame( {endpoint} ) {
 
     );
 }
+
 export default DecalFrame;

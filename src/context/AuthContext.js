@@ -6,7 +6,7 @@ import isTokenValid from "../helpers/isTokenValid";
 
 export const AuthContext = createContext({});
 
-function AuthContextProvider({children}) {
+function AuthContextProvider( {children} ) {
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
         user: null,
@@ -17,12 +17,12 @@ function AuthContextProvider({children}) {
 
     useEffect(() => {
 
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem('token');
 
 
         if (token && isTokenValid(token)) {
             const decoded = jwtDecode(token);
-            fetchUserData(decoded.sub, token, 'profile');
+            fetchUserData(decoded.sub, token,  '/profile');
         } else {
 
             toggleIsAuth({
@@ -69,8 +69,9 @@ function AuthContextProvider({children}) {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
-            });
 
+            });
+            console.log(result)
             // zet de gegevens in de state
             toggleIsAuth({
                 ...isAuth,
@@ -78,6 +79,8 @@ function AuthContextProvider({children}) {
                 user: {
                     username: result.data.username,
                     email: result.data.email,
+                    role: result.data.authorities[0].authority,
+                    url: result.config.url,
                     // id: result.data.id,
                 },
                 status: 'done',

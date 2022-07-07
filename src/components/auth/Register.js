@@ -73,7 +73,7 @@ function Register() {
                     email: email,
                     password: password,
                     username: username,
-                enabled: true,
+                    enabled: true,
                 },
                 {
                     cancelToken: source.token,
