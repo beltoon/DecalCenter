@@ -3,13 +3,10 @@ import axios from 'axios';
 import "./ContentFrame.css"
 import contentInRandomOrder from "../helpers/contentInRandomOrder";
 
-
 function DecalFrame({endpoint}) {
     const [decalList, setDecalList] = useState([]);
-    // const [endpoint, setEndpoint] = useState([]);
-    const [loading, toggleLoading] = useState(false);
+     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(false);
-
 
     useEffect(() => {
             async function fetchDecalFrameData() {
@@ -24,26 +21,9 @@ function DecalFrame({endpoint}) {
                 }
                 toggleLoading(false)
             }
-
             fetchDecalFrameData();
         }, [endpoint]
     )
-
-    // const shuffleContent = (content) => {
-    //     content.reverse().forEach((item, index) => {
-    //         const j = Math.floor(Math.random() * (index + 1));
-    //         [content[index], content[j]] = [content[j], content[index]];
-    //     });
-    //     return content;
-    // };
-
-    // function shuffleContent(content) {
-    //     content.reverse().forEach((item, index) => {
-    //         const j = Math.floor(Math.random() * (index + 1));
-    //         [content[index], content[j]] = [content[j], content[index]];
-    //     });
-    //     return content;
-    // };
 
     contentInRandomOrder({content: decalList})
 
@@ -67,11 +47,7 @@ function DecalFrame({endpoint}) {
                     </section>
                 </a>
 
-
             })}
-
-            {/*<section className="content">Block 2</section>*/}
-            {/*<section className="content">Block 3</section>*/}
 
             {loading && <p>Loading...</p>}
             {error && <p>Something went wrong collecting the data...</p>}

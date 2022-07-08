@@ -32,7 +32,7 @@ function EventOverview() {
 
     return(
         <div className="page-container">
-            <PageHeader title="event"/>
+            <PageHeader page="Upcoming events" intro="One of our missions is to create a platform where creators are able to transform their favorite livery for upcoming events. Creating the Event domain is the next big thing on our road map. Until then, we're using this part of the website to keep you up to date with the upcoming events. "/>
 
             <SearchBar placeholder="Search for an Event..." data={events} domain={"/events/"}/>
 

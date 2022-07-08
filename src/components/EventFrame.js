@@ -1,68 +1,58 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import "./ContentFrame.css"
+import contentInRandomOrder from "../helpers/contentInRandomOrder";
 
-
-
-function EventFrame( {endpoint} ) {
-    const [eventContent, setEventContent] = useState([]);
+function EventFrame({endpoint}) {
+    const [eventList, setEventList] = useState([]);
     // const [endpoint, setEndpoint] = useState([]);
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(false);
-
-
-
-
-    //ENDPOINT MOET NOG AANGEMAAKT WORDEN
 
     useEffect(() => {
             async function fetchEventFrameData() {
                 toggleLoading(true);
                 setError(false);
                 try {
-                    // const response = await axios.get('http://localhost:8080/events');
                     const response = await axios.get(endpoint);
-                    setEventContent(response.data);
-                    // console.log(response.data);
+                    setEventList(response.data);
                 } catch (e) {
                     console.error(e);
                     setError(true);
                 }
-
                 toggleLoading(false)
             }
+
             fetchEventFrameData();
         }, [endpoint]
-
     )
-    console.log(eventContent)
+    console.log(eventList)
+
+    contentInRandomOrder({content: eventList})
 
     return (
         <>
-            <div className="contentBox"> </div>
+            <div className="contentBox"></div>
             <h2>Check out the upcoming events!!</h2>
 
-            {eventContent.slice(0, 12).map((item) => {
-                return <section className="content" key={item.id}>
-                    {/*<img alt="test"></img>*/}
+            {eventList.slice(0, 9).map((item) => {
+                return <a href={`http://localhost:3000/events/${item.id}`}
+                          id="decalLink" // ID AANPASSEN
+                          title="Click to decalId page"
+                          key={item.id}>
+                    <section className="content" key={item.id}>
 
-                    <h4>
-
-                        {item.name}
-                    </h4>
-                    <h4>{item.eventDate}</h4>
+                    <h2>{item.name}</h2>
+                    <h2>{item.eventDate}</h2>
                 </section>
+                </a>
 
             })}
-
-            {/*<section className="content">Block 2</section>*/}
-            {/*<section className="content">Block 3</section>*/}
 
             {loading && <p>Loading...</p>}
             {error && <p>Something went wrong collecting the data...</p>}
         </>
-
-
     );
 }
+
 export default EventFrame;

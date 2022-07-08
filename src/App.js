@@ -30,19 +30,20 @@ function App() {
                     <HomePage/>
                 </Route>
 
-                <Route exact path="/upload-decal">
-                    <UploadDecalPage/>
+                <Route exact path="/cars/:id">
+                    <CarPage/>
                 </Route>
 
                 <Route exact path="/decals">
                     <DecalOverview/>
                 </Route>
+
                 <Route exact path="/decals/:id">
                     <DecalPage/>
                 </Route>
 
-                <Route exact path="/cars/:id">
-                    <CarPage/>
+                <Route exact path="/upload-decal">
+                    <UploadDecalPage/>
                 </Route>
 
                 <Route exact path="/events">
