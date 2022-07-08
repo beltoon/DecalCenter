@@ -1,26 +1,35 @@
 import React, {useContext} from "react";
-import {Link, useHistory} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import logo from "../../assets/decalcenter.png";
 import {AuthContext} from "../../context/AuthContext";
 import "./NavBar.css"
-import HomeIcon from '@mui/icons-material/Home';
+// import HomeIcon from '@mui/icons-material/Home';
+// import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 function NavBar() {
 
-
     const {isAuth, logout} = useContext(AuthContext);
-    const history = useHistory();
-    // console.log({isAuth})
 
-    console.log(isAuth)
+    // const [isAuthorized, setIsAuthorized] = useState(['ADMIN'].includes(user.role));
+    //
+    // useEffect(() => {
+    //     setIsAuthorized(['ADMIN'].includes(user.role))
+    // }, [user.role])
 
     return (
         <nav>
             <div className="nav-container">
-                <Link to="/">
-                    <HomeIcon
-                        className="home-icon"/>
-                </Link>
+                {/*{isAuthorized ?*/}
+                {/*    <Link to="/">*/}
+                {/*        <HomeIcon*/}
+                {/*            className="nav-icon"/>*/}
+                {/*    </Link> : <Link to="/admin">*/}
+                {/*        <AdminPanelSettingsIcon*/}
+                {/*            className="nav-icon"/>*/}
+                {/*    </Link>*/}
+                {/*}*/}
+
+
                 <Link to="/">
                     <img src={logo}
                          alt="logo"
@@ -29,35 +38,35 @@ function NavBar() {
 
 
                 <ul className="nav-item">
-                    {/*<li>*/}
-                    {/*    <NavLink to="/" exact activeClassName="active-link">Home</NavLink>*/}
-                    {/*</li>*/}
 
-                    {/*<li>*/}
-                    {/*    <NavLink to="/events" exact activeClassName="active-link">Events</NavLink>*/}
-                    {/*</li>*/}
+
+                    <li>
+                        <NavLink to="/events" exact activeClassName="active-link">Events</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/decals" exact activeClassName="active-link">Decals</NavLink>
+                    </li>
 
                     <li>
                         {isAuth ?
-                            <button type="button"
-                                    onClick={() => history.push('/profile')}>Profile</button>
+                            <NavLink to="/profile" exact activeClassName="active-link">Profile</NavLink>
                             :
-                            <button type="button"
-                                    onClick={() => history.push('/register')}>Create an account</button>
+                            <NavLink to="/Register" exact activeClassName="active-link">Profile</NavLink>
                         }
                     </li>
                     <li>
-                       {isAuth ? <button
-                                type="button"
+                        {isAuth ? <NavLink
+                                to="/"
+                                exact activeClassName="active-link"
                                 onClick={logout}>
                                 Log out
-                            </button> :
-                            <button
-                                type="button"
-                                onClick={() => history.push('/login')}
+                            </NavLink> :
+                            <NavLink
+                                to="/login"
+                                exact activeClassName="active-link"
                             >
                                 Log in
-                            </button>}
+                            </NavLink>}
                     </li>
                 </ul>
 

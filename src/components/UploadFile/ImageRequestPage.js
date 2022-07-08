@@ -63,7 +63,7 @@ function ImageRequestPage() {
     }
 
     useEffect(() => {
-        async function fetchCars() {
+        async function fetchCarsForUpload() {
             try {
                 const response = await axios.get('http://localhost:8080/cars');
                 // console.log(response.data)
@@ -73,7 +73,7 @@ function ImageRequestPage() {
             }
         }
 
-        fetchCars();
+        fetchCarsForUpload();
     }, []);
 
     return (

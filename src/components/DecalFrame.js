@@ -12,7 +12,7 @@ function DecalFrame({endpoint}) {
 
 
     useEffect(() => {
-            async function fetchData() {
+            async function fetchDecalFrameData() {
                 toggleLoading(true);
                 setError(false);
                 try {
@@ -25,7 +25,7 @@ function DecalFrame({endpoint}) {
                 toggleLoading(false)
             }
 
-            fetchData();
+            fetchDecalFrameData();
         }, [endpoint]
     )
 

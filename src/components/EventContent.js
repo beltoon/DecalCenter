@@ -9,7 +9,7 @@ function EventContent( {endpoint} ) {
     useEffect(() => {
         console.log(endpoint);
 
-        async function fetchData() {
+        async function fetchEventContentData() {
             try {
                 const {data} = await axios.get(endpoint);
                 setContent(data);
@@ -18,7 +18,7 @@ function EventContent( {endpoint} ) {
             }
         }
 
-        fetchData();
+        fetchEventContentData();
     }, [endpoint]);
 
     return (

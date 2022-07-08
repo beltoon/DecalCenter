@@ -53,7 +53,7 @@ function CarPage() {
                 // toggleLoading(false)
             }
             fetchDecalData();
-        }, []
+        }, [carId]
     )
 
     // console.log(carList)

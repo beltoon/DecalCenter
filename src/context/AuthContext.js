@@ -22,7 +22,7 @@ function AuthContextProvider( {children} ) {
 
         if (token && isTokenValid(token)) {
             const decoded = jwtDecode(token);
-            fetchUserData(decoded.sub, token,  '/profile');
+            fetchUserData(decoded.sub, token);
         } else {
 
             toggleIsAuth({
@@ -79,9 +79,8 @@ function AuthContextProvider( {children} ) {
                 user: {
                     username: result.data.username,
                     email: result.data.email,
-                    role: result.data.authorities[0].authority,
-                    url: result.config.url,
-                    // id: result.data.id,
+                    // url: result.config.url,
+                    id: result.data.id,
                 },
                 status: 'done',
             });

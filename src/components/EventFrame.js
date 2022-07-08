@@ -16,7 +16,7 @@ function EventFrame( {endpoint} ) {
     //ENDPOINT MOET NOG AANGEMAAKT WORDEN
 
     useEffect(() => {
-            async function fetchData() {
+            async function fetchEventFrameData() {
                 toggleLoading(true);
                 setError(false);
                 try {
@@ -31,7 +31,7 @@ function EventFrame( {endpoint} ) {
 
                 toggleLoading(false)
             }
-            fetchData();
+            fetchEventFrameData();
         }, [endpoint]
 
     )

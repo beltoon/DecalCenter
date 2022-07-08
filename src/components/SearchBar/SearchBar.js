@@ -2,11 +2,17 @@ import React, {useState} from "react";
 import "./SearchBar.css";
 import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
+import {useEffect, useRef} from "react";
 
 function SearchBar({placeholder, data, domain}) {
+    const userRef = useRef();
 
     const [filteredData, setFilteredData] = useState([]);
     const [query, setQuery] = useState("");
+
+    useEffect(() => {
+        userRef.current.focus();
+    }, [])
 
     const handleFilter = (e) => {
         const searchWord = e.target.value;
@@ -39,6 +45,7 @@ function SearchBar({placeholder, data, domain}) {
                     type="text"
                     placeholder={placeholder}
                     value={query}
+                    ref={userRef}
                     onChange={handleFilter}
                 />
                 <div className="searchIcon">

@@ -13,6 +13,7 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom
 import {AuthContext} from "./context/AuthContext";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
+import DecalOverview from "./pages/DecalOverview";
 
 
 
@@ -33,6 +34,9 @@ function App() {
                     <UploadDecalPage/>
                 </Route>
 
+                <Route exact path="/decals">
+                    <DecalOverview/>
+                </Route>
                 <Route exact path="/decals/:id">
                     <DecalPage/>
                 </Route>
