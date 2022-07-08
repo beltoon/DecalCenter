@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
+import DecalFrame from "../components/DecalFrame";
 
 
 function CarPage() {
@@ -20,7 +21,7 @@ function CarPage() {
                 // setError(false);
                 try {
                     // const response = await axios.get('http://localhost:8080/decals');
-                    const response = await axios.get(`http://localhost:8080/decals`);
+                    const response = await axios.get(`http://localhost:8080/cars/${carId}/decals`);
                     setCars(response.data);
                     console.log(response.data);
                 } catch (e) {
@@ -48,16 +49,18 @@ function CarPage() {
                 <h2>{cars.name}</h2>
             </div>
 
-            {/*{cars.length !== 0 && (*/}
-            {/*    <div>*/}
-            {/*        {cars.map((value, key) => {*/}
-            {/*            return (*/}
-            {/*                <h2 key={value.id}>*/}
-            {/*                    {value.name}*/}
-            {/*                    {value.car.id}</h2>*/}
-            {/*            );*/}
-            {/*        })}*/}
-            {/*    </div>)}*/}
+            {cars.length !== 0 && (
+                <div>
+                    {cars.map((value, key) => {
+                        return (
+                            <h2 key={value.id}>
+                                {value.name}
+                                {value.car.id}</h2>
+                        );
+                    })}
+                </div>)}
+
+            <DecalFrame endpoint={`http://localhost:8080/cars/${carId}/decals`}/>
 
 
 

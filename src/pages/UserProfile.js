@@ -1,18 +1,25 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useEffect} from "react";
 
 import "./UserProfile.css";
 import {AuthContext} from "../context/AuthContext";
 
 import axios from 'axios'
 import EventFrame from "../components/EventFrame";
+import {Link} from "react-router-dom";
 
 
 function UserProfile() {
- const [deleteRequest, setDeleteRequest] = useState('');
+    const [deleteRequest, setDeleteRequest] = useState('');
 
     const {user} = useContext(AuthContext);
 
-    console.log(user.url)
+    useEffect(() => {
+        const source = axios.CancelToken.source();
+
+    return function cleanup() {
+        source.cancel();
+    }
+}, []);
 
     async function deleteAccount(e) {
         e.preventDefault()
@@ -45,19 +52,16 @@ function UserProfile() {
                     <div className="buttons">
 
 
-
-
-
-
                     </div>
 
 
                 </div>
 
                 <h2>Welcome back {user.username}</h2>
+
             </div>
 
-            {/*<p>Visit the <Link to="/">HOME PAGE</Link> for the latest content</p>*/}
+            <p>Visit the <Link to="/">HOME PAGE</Link> for the latest content</p>
 
             <EventFrame endpoint='http://localhost:8080/events'/>
 
@@ -65,12 +69,11 @@ function UserProfile() {
             <div className="delete-button">
                 {show ? (
                     <button
-                        onClick={deleteAccount}> <h4>Are you sure?</h4></button>
+                        onClick={deleteAccount}><h4>Are you sure?</h4></button>
                 ) : (
-                    <button onClick={changeState}><h5>Delete account </h5> </button>
+                    <button onClick={changeState}><h5>Delete account </h5></button>
                 )}
             </div>
-
 
 
         </div>

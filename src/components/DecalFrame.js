@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import "./ContentFrame.css"
+import shuffleContent from "../helpers/shuffleContent";
 
 
 function DecalFrame({endpoint}) {
@@ -15,40 +16,46 @@ function DecalFrame({endpoint}) {
                 toggleLoading(true);
                 setError(false);
                 try {
-                    // const response = await axios.get('http://localhost:8080/decals');
                     const response = await axios.get(endpoint);
                     setContent(response.data);
-                    // console.log(response.data);
                 } catch (e) {
                     console.error(e);
                     setError(true);
                 }
-
                 toggleLoading(false)
             }
 
             fetchData();
         }, [endpoint]
     )
-    // console.log(contentList)
-    // console.log(content)
+
+    // const shuffleContent = (content) => {
+    //     content.reverse().forEach((item, index) => {
+    //         const j = Math.floor(Math.random() * (index + 1));
+    //         [content[index], content[j]] = [content[j], content[index]];
+    //     });
+    //     return content;
+    // };
+
+    // function shuffleContent(content) {
+    //     content.reverse().forEach((item, index) => {
+    //         const j = Math.floor(Math.random() * (index + 1));
+    //         [content[index], content[j]] = [content[j], content[index]];
+    //     });
+    //     return content;
+    // };
+
+    shuffleContent(content)
+
 
     return (
         <>
             <div className="contentBox"></div>
-            <h2>Check out the latest decals!!</h2>
-
             {content.slice(0, 9).map((item) => {
-                return <section className="content" key={item.id}
-                >
-                    {/*<img alt="test"></img>*/}
-                    <h4>
-
-                        {item.name}
-                    </h4>
+                return <section className="content" key={item.id}>
+                    <h4>{item.name}</h4>
                     <h4>{item.car.name}</h4>
-                    <h5>
-                        {item.company}
+                    <h5>{item.company}
                         <p>Located: {item.decalPosition}</p>
                     </h5>
                 </section>
