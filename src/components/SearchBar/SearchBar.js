@@ -30,6 +30,7 @@ function SearchBar({placeholder, data, domain}) {
 
     const domainUrl = domain;
 
+
     return (
 
         <div className="search">

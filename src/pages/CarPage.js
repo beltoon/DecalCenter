@@ -2,28 +2,49 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import DecalFrame from "../components/DecalFrame";
+import PageHeader from "../components/PageHeader/PageHeader";
+import SearchBar from "../components/SearchBar/SearchBar";
 
 
 function CarPage() {
 
-    const [cars, setCars] = useState('');
-    // const [loading, toggleLoading] = useState(false);
-    // const [error, setError] = useState(false);
+    const [carList, setCarList] = useState('');
+    const [carData, setCarData] = useState('')
+    const [loading, toggleLoading] = useState(false);
+    const [error, setError] = useState(false);
 
     const params = useParams();
     const carId = params.id;
 
-    console.log(carId)
+    // console.log(carId)
 
     useEffect(() => {
-            async function fetchData() {
+            async function fetchCarData() {
+                toggleLoading(true);
+                setError(false);
+                try {
+                    const response = await axios.get(`http://localhost:8080/cars/${carId}`);
+                    setCarData(response.data);
+                    console.log(response.data);
+                } catch (e) {
+                    console.error(e);
+                    setError(true);
+                }
+                toggleLoading(false)
+            }
+            fetchCarData();
+        }, [carId]
+    )
+
+
+    useEffect(() => {
+            async function fetchDecalData() {
                 // toggleLoading(true);
                 // setError(false);
                 try {
                     // const response = await axios.get('http://localhost:8080/decals');
                     const response = await axios.get(`http://localhost:8080/cars/${carId}/decals`);
-                    setCars(response.data);
-                    console.log(response.data);
+                    setCarList(response.data);
                 } catch (e) {
                     console.error(e);
                     // setError(true);
@@ -31,54 +52,23 @@ function CarPage() {
 
                 // toggleLoading(false)
             }
-            fetchData();
+            fetchDecalData();
         }, []
     )
 
-    console.log(cars)
-
-
+    // console.log(carList)
 
     return (
         <div className="page-container">
-            <header className="header-container">
-                <h1>This is the {cars.name}</h1>
-            </header>
 
-            <div className="contentblock">
-                <h2>{cars.name}</h2>
-            </div>
+            <PageHeader page={carData.name} intro={`On this page you'll find some of the coolest ${carData.brand} decals. Check out the decals below or use the search to find the decal you're looking for.`}/>
 
-            {cars.length !== 0 && (
-                <div>
-                    {cars.map((value, key) => {
-                        return (
-                            <h2 key={value.id}>
-                                {value.name}
-                                {value.car.id}</h2>
-                        );
-                    })}
-                </div>)}
+            <SearchBar placeholder={`Search ${carData.brand} Decals`} data={carList} domain={`/cars/${carList.id}/decals`}/>
 
             <DecalFrame endpoint={`http://localhost:8080/cars/${carId}/decals`}/>
 
-
-
-                    {/*<img alt="test"></img>*/}
-{/*<section>*/}
-{/*                    <h4>*/}
-
-{/*                        {item.name}*/}
-{/*                    </h4>*/}
-{/*                    <h4>{item.car.name}</h4>*/}
-{/*                    <h5>*/}
-{/*                        {item.company}*/}
-{/*                        <p>Located: {item.decalPosition}</p>*/}
-{/*                    </h5>*/}
-{/*                </section>*/}
-
-
-
+            {loading && <p>Loading...</p>}
+            {error && <p>Something went wrong collecting the data...</p>}
             {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}
         </div>
 

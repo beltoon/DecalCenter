@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import "./ContentFrame.css"
-import shuffleContent from "../helpers/shuffleContent";
+import contentInRandomOrder from "../helpers/contentInRandomOrder";
 
 
 function DecalFrame({endpoint}) {
-    const [content, setContent] = useState([]);
+    const [decalList, setDecalList] = useState([]);
     // const [endpoint, setEndpoint] = useState([]);
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -17,7 +17,7 @@ function DecalFrame({endpoint}) {
                 setError(false);
                 try {
                     const response = await axios.get(endpoint);
-                    setContent(response.data);
+                    setDecalList(response.data);
                 } catch (e) {
                     console.error(e);
                     setError(true);
@@ -45,20 +45,28 @@ function DecalFrame({endpoint}) {
     //     return content;
     // };
 
-    shuffleContent(content)
+    contentInRandomOrder({content: decalList})
 
 
     return (
         <>
             <div className="contentBox"></div>
-            {content.slice(0, 9).map((item) => {
-                return <section className="content" key={item.id}>
-                    <h4>{item.name}</h4>
-                    <h4>{item.car.name}</h4>
-                    <h5>{item.company}
-                        <p>Located: {item.decalPosition}</p>
-                    </h5>
-                </section>
+
+            {decalList.slice(0, 9).map((item) => {
+                return <a href={`http://localhost:3000/decals/${item.id}`}
+                          id="decalLink"
+                          title="Click to decalId page"
+                          key={item.id}>
+                    <section className="content">
+                        {/*{console.log(item.id)}*/}
+                        <h4>{item.name}</h4>
+                        <h4>{item.car.name}</h4>
+                        <h5>{item.company}
+                            <p>Located: {item.decalPosition}</p>
+                        </h5>
+                    </section>
+                </a>
+
 
             })}
 

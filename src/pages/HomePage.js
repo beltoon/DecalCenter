@@ -30,6 +30,8 @@ function HomePage() {
         fetchCars();
     }, []);
 
+
+
     return (
         <>
             <div className="page-container">
