@@ -28,9 +28,7 @@ function Register() {
     const history = useHistory();
     const source = axios.CancelToken.source();
 
-    // state voor functionaliteit
     const [error, toggleError] = useState(false);
-    // const [loading, toggleLoading] = useState(false);
 
     useEffect(() => {
         return function cleanup() {
@@ -66,7 +64,6 @@ function Register() {
             setErrorMessage("Invalid Entry");
             return;
 
-            // toggleLoading(true);
         }
         try {
             const response = await axios.post('http://localhost:8080/users', {
@@ -82,13 +79,6 @@ function Register() {
             history.push('/login');
             console.log(response.data)
 
-
-            //clear state and controlled inputs
-
-            // setUsername('');
-            // setEmail('');
-            // setPassword('');
-            // setMatchPwd('');
         } catch (e) {
             toggleError(true);
             if (!e?.response) {
@@ -101,13 +91,11 @@ function Register() {
             errRef.current.focus();
         }
 
-        // toggleLoading(false);
     }
-
 
     return (
         <>
-            <section>
+              <section className="inner-content-container">
 
                 <p ref={errRef} className={errorMessage ? "errmsg" : "offscreen"}
                    aria-live="assertive">{errorMessage}</p>
@@ -116,7 +104,7 @@ function Register() {
                     molestias qui quo unde?</p>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">
-                        Username:
+                        <h4>Username:</h4>
                         <input
                             type="username"
                             id="username"
@@ -140,7 +128,7 @@ function Register() {
                     </label>
 
                     <label htmlFor="e-mail">
-                        E-mail:
+                        <h4>E-mail:</h4>
                         <input
                             type="text"
                             id="e-mail"
@@ -152,7 +140,7 @@ function Register() {
                     </label>
 
                     <label htmlFor="password">
-                        Password:
+                        <h4>Password:</h4>
                         <input
                             type="password"
                             id="password"
@@ -176,7 +164,7 @@ function Register() {
                     </label>
 
                     <label htmlFor="confirm_pwd">
-                        Confirm Password:
+                    <h4>Confirm Password:</h4>
                         <input
                             type="password"
                             id="confirm_pwd"
@@ -202,7 +190,7 @@ function Register() {
                     </button>
                 </form>
 
-                <span><p>Already Registered</p><br/>
+                <span><p>Already Registered?</p><br/>
                 <a href={"/login"}>Sign in</a></span>
             </section>
 

@@ -21,7 +21,7 @@ function EventOverview() {
                 const response = await axios.get('http://localhost:8080/decals');
                 console.log(response.data)
                 setDecalList(response.data)
-            } catch(e) {
+            } catch (e) {
                 console.error(e)
             }
         }
@@ -31,17 +31,16 @@ function EventOverview() {
 
     contentInRandomOrder({content: decalList})
 
-    return(
+    return (
         <div className="page-container">
-            <PageHeader title="event"/>
+            <PageHeader page="Find all decals"
+                        intro="On this page you can find the entire Decal Database. If you want to find a decal for a specific car, use the search engine of the home page."/>
 
             <SearchBar placeholder="Search for a Decal" data={decalList} domain={"/decals/"}/>
 
             <button type="button" onClick={handleClick}>
                 Upload Decal
             </button>
-
-
 
             <DecalFrame endpoint={'http://localhost:8080/decals'}/>
 

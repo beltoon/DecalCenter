@@ -6,9 +6,7 @@ function SignUpPage() {
         <>
             <div className="page-container">
 
-
                 <Register/>
-
 
             </div>
         </>

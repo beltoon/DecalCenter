@@ -13,7 +13,7 @@ label {
 }
 
 input, select {
-    border: 1px solid #ededed;
+    border: 1px solid var(--white);
     border-radius: 4px;
     padding: 12px;
     font-size: 16px;
@@ -21,7 +21,7 @@ input, select {
 }
 
 select {
-    border: 1px solid #ededed;
+    border: 1px solid var(--white);
     border-radius: 4px;
     padding: 8px;
     font-size: 16px;
@@ -29,9 +29,9 @@ select {
 }
 
 button {
-    background-color: darkcyan;
+    background-color: var(--secondary);
     font-family: 'Poppins', 'Arial', sans-serif;
-    color: white;
+    color: var(--white);
     font-size: 16px;
     font-weight: 600;
     border-radius: 4px;

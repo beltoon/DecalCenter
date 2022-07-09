@@ -47,7 +47,6 @@ function ImageRequestPage() {
         try {
             // verstuur ons formData object en geef in de header aan dat het om een form-data type gaat
             // Let op: we wijzigen nu ALTIJD de afbeelding voor student 1001, als je een andere student wil kiezen of dit dynamisch wil maken, pas je de url aan!
-            // const result = await axios.post('http://localhost:8080/decals/1001/', formData,
             const result = await axios.post(`http://localhost:8080/decals/file`, formData,
                 {
                     headers: {
@@ -77,12 +76,12 @@ function ImageRequestPage() {
     }, []);
 
     return (
-        <div>
+        <article>
             {addSucces === true && <p>Decal has been added!</p>}
             <form onSubmit={sendImage}
             >
                 <label htmlFor="car-id">
-                    Car:
+                    <h4>Car:</h4>
                     <select
                         name="CarId"
                         type="dropdown"
@@ -97,12 +96,10 @@ function ImageRequestPage() {
                             </option>
                         })}
                     </select>
-
-
                 </label>
 
                 <label htmlFor="decal-name">
-                    Decal name:
+                    <h4>Decal name:</h4>
                     <input
                         type="text"
                         name="decal-name-field"
@@ -112,7 +109,7 @@ function ImageRequestPage() {
                 </label>
 
                 <label htmlFor="brand-name">
-                    Brand:
+                    <h4>Brand:</h4>
                     <input
                         type="text"
                         name="brand-field"
@@ -120,8 +117,9 @@ function ImageRequestPage() {
                         value={brand}
                         onChange={(e) => setBrand(e.target.value)}/>
                 </label>
+
                 <label htmlFor="series">
-                    Decal Position:
+                    <h4>Decal Position:</h4>
                     <select
                         id="decalPosition"
                         name="decal-position-field"
@@ -142,8 +140,9 @@ function ImageRequestPage() {
                         </option>
                     </select>
                 </label>
+
                 <label htmlFor="series">
-                    Series:
+                    <h4>Series:</h4>
                     <select
                         id="series"
                         name="series-field"
@@ -161,12 +160,12 @@ function ImageRequestPage() {
                     </select>
                 </label>
                 <label htmlFor="decal-image">
-                    Choose image:
+                    <h4>Choose image:</h4>
                     <input type="file" name="image-field" id="decal-image" onChange={handleImageChange}/>
                 </label>
                 {previewUrl &&
                     <label>
-                        Preview:
+                    <h4>Preview:</h4>
                         <img src={previewUrl} alt="Voorbeeld van de afbeelding die zojuist gekozen is"
                              className="image-preview"/>
                     </label>
@@ -176,7 +175,7 @@ function ImageRequestPage() {
                     Add decal
                 </button>
             </form>
-        </div>
+        </article>
     );
 }
 

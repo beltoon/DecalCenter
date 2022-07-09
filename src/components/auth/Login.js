@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useRef, useState} from 'react';
 import {AuthContext} from "../../context/AuthContext";
 import {Link, useHistory} from "react-router-dom";
 import "./auth.css"
-
 import axios from 'axios'
 
 
@@ -13,8 +12,6 @@ function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-
-    const [success, setSuccess] = useState(false)
 
     const {login} = useContext(AuthContext);
     const source = axios.CancelToken.source();
@@ -40,14 +37,13 @@ function Login() {
         e.preventDefault();
         try {
             const result = await axios.post('http://localhost:8080/authenticate', {
-                    username: username,
-                    password: password,
-                }, {
-                    cancelToken: source.token,
-                });
+                username: username,
+                password: password,
+            }, {
+                cancelToken: source.token,
+            });
             console.log(result.data);
             login(result.data.jwt);
-            setSuccess(true);
             history.push('/profile');
 
         } catch (e) {
@@ -66,14 +62,7 @@ function Login() {
 
     return (
         <>
-            {success ? (
-                <section>
-                    <h1>You are logged in!</h1>
-                    <br />
-
-                </section>
-            ) : (
-            <section>
+            <section className="app">
                 <p ref={errRef} className={errorMessage ? "errormessage" : "offscreen"}
                    aria-live="assertive">{errorMessage}</p>
                 <h1>Inloggen</h1>
@@ -81,7 +70,7 @@ function Login() {
 
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">
-                        Username:
+                        <h4>Username:</h4>
                         <input
                             type="username"
                             id="username"
@@ -95,7 +84,7 @@ function Login() {
                     </label>
 
                     <label htmlFor="password">
-                        Password:
+                        <h4>Password: </h4>
                         <input
                             type="password"
                             id="password"
@@ -120,7 +109,7 @@ function Login() {
                 <p>If you have no account, feel free to <Link to="/register">register here.</Link></p>
 
             </section>
-                )}
+
         </>
     );
 }

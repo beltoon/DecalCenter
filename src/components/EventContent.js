@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import './Content.css';
-import placeholder from "../assets/placeholder300x200.png";
+import placeholder from "../assets/coming soon.png";
 
 function EventContent( {endpoint} ) {
     const [content, setContent] = useState(null);
@@ -29,13 +29,9 @@ function EventContent( {endpoint} ) {
                     <img
                         alt="afbeelding decal"
                         src={placeholder}/>
-                    <h2>{content.name}</h2>
-                    <h3>{content.eventDate}</h3>
 
                 </>
-                //h3 = car model
-
-            }
+                  }
         </section>
     );
 }

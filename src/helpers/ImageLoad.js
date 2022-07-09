@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
+import './ImageLoad.css';
 
-const ImageLoad = React.memo(({ src, placeholder, alt = "" }) => {
+const ImageLoad = React.memo(({src, carName, placeholder, alt = ""}) => {
     const [loading, setLoading] = useState(true);
     const [currentSrc, updateSrc] = useState(placeholder);
 
@@ -16,14 +17,20 @@ const ImageLoad = React.memo(({ src, placeholder, alt = "" }) => {
     }, [src])
 
     return (
-        <img
-            src={currentSrc}
-            style={{
-                opacity: loading ? 0.5 : 1,
-                transition: "opacity .15s linear"
-            }}
-            alt={alt}
-        />
+        <>
+            <h1>{carName}</h1>
+            <p>Right click, save image as</p>
+            <img
+                className="decalImage"
+                src={currentSrc}
+                style={{
+                    opacity: loading ? 0.5 : 1,
+                    transition: "opacity .15s linear"
+                }}
+                alt={alt}
+            />
+
+        </>
     )
 });
 

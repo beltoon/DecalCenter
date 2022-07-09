@@ -71,7 +71,7 @@ function AuthContextProvider( {children} ) {
                 },
 
             });
-            console.log(result)
+
             // zet de gegevens in de state
             toggleIsAuth({
                 ...isAuth,
@@ -79,11 +79,12 @@ function AuthContextProvider( {children} ) {
                 user: {
                     username: result.data.username,
                     email: result.data.email,
-                    // url: result.config.url,
+                    role: result.data.authorities[0].authority,
                     id: result.data.id,
                 },
                 status: 'done',
             });
+
 
             // als er een redirect URL is meegegeven (bij het mount-effect doen we dit niet) linken we hiernnaartoe door
             // als we de history.push in de login-functie zouden zetten, linken we al door voor de gebuiker is opgehaald!
@@ -106,6 +107,7 @@ function AuthContextProvider( {children} ) {
 
         isAuth: isAuth.isAuth,
         user: isAuth.user,
+        role: isAuth.role,
         login: login,
         logout: logout,
     };
@@ -113,6 +115,8 @@ function AuthContextProvider( {children} ) {
     return (
         <AuthContext.Provider value={contextData}>
             {isAuth.status === 'done' ? children : <p>Loading...</p>}
+            {isAuth.status === 'pending' && <p>Loading...</p>}
+            {isAuth.status === 'error' && <p>Error! Refresh de pagina!</p>}
         </AuthContext.Provider>
     );
 }

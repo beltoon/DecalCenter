@@ -1,25 +1,30 @@
-import React, {useContext, useState, useEffect} from "react";
-
+import React, {useContext, useEffect, useState} from "react";
 import "./UserProfile.css";
 import {AuthContext} from "../context/AuthContext";
-
 import axios from 'axios'
 import EventFrame from "../components/EventFrame";
 import {Link} from "react-router-dom";
 
-
 function UserProfile() {
     const [deleteRequest, setDeleteRequest] = useState('');
+    const [role, setRole] = useState('');
 
     const {user} = useContext(AuthContext);
 
     useEffect(() => {
+        setRole(user.role)
+    }, [user.role])
+
+    console.log(role)
+
+
+    useEffect(() => {
         const source = axios.CancelToken.source();
 
-    return function cleanup() {
-        source.cancel();
-    }
-}, []);
+        return function cleanup() {
+            source.cancel();
+        }
+    }, []);
 
     async function deleteAccount(e) {
         e.preventDefault()
@@ -39,11 +44,12 @@ function UserProfile() {
         setShow(!show);
     }
 
+    console.log(user)
     return (
         <div className="page-container">
             <div className="welcome">
                 <div className="profile-card">
-                    <img className="profile-image" src="https://i.imgur.com/bDLhJiP.jpg" alt="profile"/>
+
                     <h3 className="userName">
                         {user.username}
                     </h3>
@@ -54,6 +60,16 @@ function UserProfile() {
 
                     </div>
 
+                    {role === "ROLE_ADMIN" ?
+                        <Link to="/admin">
+                            <button>Admin Page</button>
+                        </Link>
+                        : <Link to="/">
+                            <button>home</button>
+                        </Link>
+
+                    }
+
 
                 </div>
 
@@ -61,14 +77,13 @@ function UserProfile() {
 
             </div>
 
-            <p>Visit the <Link to="/">HOME PAGE</Link> for the latest content</p>
-
             <EventFrame endpoint='http://localhost:8080/events'/>
 
 
             <div className="delete-button">
                 {show ? (
                     <button
+                        className="delete-button"
                         onClick={deleteAccount}><h4>Are you sure?</h4></button>
                 ) : (
                     <button onClick={changeState}><h5>Delete account </h5></button>

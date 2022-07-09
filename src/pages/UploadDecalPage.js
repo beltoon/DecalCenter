@@ -1,6 +1,5 @@
 import React from 'react';
 import PageHeader from "../components/PageHeader/PageHeader";
-// import axios from "axios";
 import ImageRequestPage from "../components/UploadFile/ImageRequestPage";
 
 

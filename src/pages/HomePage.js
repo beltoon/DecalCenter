@@ -10,12 +10,6 @@ import axios from "axios";
 function HomePage() {
     const [cars, setCars] = useState([])
 
-    // const history = useHistory();
-
-    // function handleClick() {
-    //     history.push("/register");
-    // }
-
     useEffect(() => {
         async function fetchCars() {
             try {
@@ -31,11 +25,9 @@ function HomePage() {
     }, []);
 
 
-
     return (
         <>
-            <div className="page-container">
-
+            <div className="outer-content-container">
 
                 <PageHeader page="Welcome to DecalCenter"
                             intro="Decal Center provides custom car decals to iRacing. Designed by the brands and available for everyone to use. Find the decal of your favorite brand, located perfectly for you car!"/>
@@ -46,7 +38,6 @@ function HomePage() {
                     <DecalFrame endpoint={'http://localhost:8080/decals'}/>
                 </div>
 
-                {/*<p>ga naar je eigen <Link to="/user">profiel</Link></p>*/}
             </div>
 
         </>
