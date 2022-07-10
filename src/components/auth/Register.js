@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import "./auth.css"
 import {useHistory} from "react-router-dom";
 import axios from 'axios'
+import PageHeader from "../PageHeader/PageHeader";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -99,7 +100,7 @@ function Register() {
 
                 <p ref={errRef} className={errorMessage ? "errmsg" : "offscreen"}
                    aria-live="assertive">{errorMessage}</p>
-                <h1>Register</h1>
+                <PageHeader page="Register" intro="Fill in the form below."/>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">
                         <h4>Username:</h4>

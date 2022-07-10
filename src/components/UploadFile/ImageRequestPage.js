@@ -16,30 +16,22 @@ function ImageRequestPage() {
     const [id, setId] = useState(1);
 
     function handleImageChange(e) {
-        // Sla het gekozen bestand op
         const uploadedFile = e.target.files[0];
-        console.log(uploadedFile);
-        // Sla het gekozen bestand op in de state
+
         setFile(uploadedFile);
-        // Sla de preview URL op zodat we deze kunnen laten zien in een <img>
         setPreviewUrl(URL.createObjectURL(uploadedFile));
     }
 
     async function sendImage(e) {
-        // Voorkom een refresh op submit
         e.preventDefault();
-        // maak een nieuw FormData object (ingebouwd type van JavaScript)
+
         const formData = new FormData();
-        // Voeg daar ons bestand uit de state aan toe onder de key "file"
         formData.append("file", file);
         formData.append("name", decalName);
         formData.append("company", brand);
         formData.append("decalPosition", decalPosition);
         formData.append("series", series);
         formData.append("Car", id);
-
-        console.log(series)
-        console.log(id)
 
         try {
             const result = await axios.post(`http://localhost:8080/decals/file`, formData,
@@ -52,7 +44,7 @@ function ImageRequestPage() {
             toggleAddSuccess(true);
 
         } catch (e) {
-            console.error(e)
+                    console.error(e)
         }
     }
 
@@ -60,7 +52,6 @@ function ImageRequestPage() {
         async function fetchCarsForUpload() {
             try {
                 const response = await axios.get('http://localhost:8080/cars');
-                // console.log(response.data)
                 setCars(response.data)
             } catch (e) {
                 console.error(e)
@@ -88,8 +79,8 @@ function ImageRequestPage() {
                     >
                         {cars.map((car) => {
                             return <option value={car.id}
-                                key={car.id}>
-                               {car.name}
+                                           key={car.id}>
+                                {car.name}
                             </option>
                         })}
                     </select>
@@ -158,18 +149,25 @@ function ImageRequestPage() {
                 </label>
                 <label htmlFor="decal-image">
                     <h4>Choose image:</h4>
-                    <input type="file" name="image-field" id="decal-image" onChange={handleImageChange}/>
+                    <input type="file"
+                           typeof="png"
+                           name="image-field"
+                           id="decal-image"
+                           accept=".png"
+                           onChange={handleImageChange}/>
                 </label>
                 {previewUrl &&
                     <label>
-                    <h4>Preview:</h4>
-                        <img src={previewUrl} alt="Voorbeeld van de afbeelding die zojuist gekozen is"
+                        <h4>Preview:</h4>
+                        <img src={previewUrl} alt="preview"
                              className="image-preview"/>
                     </label>
                 }
                 {addSucces === true && <h4>Decal has been added!</h4>}
 
-                {addSucces === true ? <a href="/upload-decal"><button type="button">Upload new decal</button></a> : <button type="submit">
+                {addSucces === true ? <a href="/upload-decal">
+                    <button type="button">Upload new decal</button>
+                </a> : <button type="submit">
                     Add decal
                 </button>
                 }
