@@ -13,7 +13,6 @@ function EventPage() {
 
             <PageHeader page="Events" intro="Unfortunately this area is still under construction."/>
 
-
             <EventContent endpoint={"http://localhost:8080/events/1001"}/>
 
         </div>

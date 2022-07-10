@@ -1,8 +1,6 @@
 import React from "react";
 import "./PageHeader.css"
 
-
-
 function PageHeader({ page, intro }) {
 
     return (

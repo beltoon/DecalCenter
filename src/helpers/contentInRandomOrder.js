@@ -6,5 +6,4 @@ function contentInRandomOrder( {content} ) {
         return content;
     };
 
-
 export default contentInRandomOrder;

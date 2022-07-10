@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import placeholder from "../assets/coming soon.png";
 
-function EventContent( {endpoint} ) {
+function EventContent({endpoint}) {
     const [content, setContent] = useState(null);
 
     useEffect(() => {
@@ -24,16 +24,13 @@ function EventContent( {endpoint} ) {
         <section>
             {content &&
                 <>
-
                     <img
                         alt="afbeelding decal"
                         src={placeholder}/>
-
                 </>
-                  }
+            }
         </section>
     );
 }
 
 export default EventContent;
-

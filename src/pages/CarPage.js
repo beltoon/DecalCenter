@@ -5,7 +5,6 @@ import DecalFrame from "../components/DecalFrame";
 import PageHeader from "../components/PageHeader/PageHeader";
 import SearchBar from "../components/SearchBar/SearchBar";
 
-
 function CarPage() {
 
     const [carList, setCarList] = useState('');
