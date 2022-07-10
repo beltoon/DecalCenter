@@ -1,11 +1,11 @@
-import RoleBasedComponent from "../components/RoleBasedComponent";
+import RoleBasedComponent from "../helpers/RoleBasedComponent";
 import {AuthContext} from "../context/AuthContext";
 import React, {useContext} from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
-import AddCar from "../AdminTools/AddCar";
-import DeleteCar from "../AdminTools/DeleteCar";
-import DeleteDecal from "../AdminTools/DeleteDecal";
-import AddEvent from "../AdminTools/AddEvent";
+import AddCar from "../admintools/AddCar";
+import DeleteCar from "../admintools/DeleteCar";
+import DeleteDecal from "../admintools/DeleteDecal";
+import AddEvent from "../admintools/AddEvent";
 
 function AdminPage() {
 

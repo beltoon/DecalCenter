@@ -74,7 +74,7 @@ function ImageRequestPage() {
 
 
         <article className="page-container">
-            {addSucces === true && <p>Decal has been added!</p>}
+
             <form onSubmit={sendImage}
             >
                 <label htmlFor="car-id">
@@ -167,10 +167,13 @@ function ImageRequestPage() {
                              className="image-preview"/>
                     </label>
                 }
+                {addSucces === true && <h4>Decal has been added!</h4>}
 
-                <button type="submit">
+                {addSucces === true ? <a href="/upload-decal"><button type="button">Upload new decal</button></a> : <button type="submit">
                     Add decal
                 </button>
+                }
+
             </form>
         </article>
     );

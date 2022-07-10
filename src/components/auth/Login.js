@@ -67,7 +67,6 @@ function Login() {
                    aria-live="assertive">{errorMessage}</p>
                 <h1>Inloggen</h1>
 
-
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">
                         <h4>Username:</h4>

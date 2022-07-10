@@ -1,8 +1,5 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "./SearchBar.css";
-import CloseIcon from '@mui/icons-material/Close';
-import SearchIcon from '@mui/icons-material/Search';
-import {useEffect, useRef} from "react";
 
 function SearchBar({placeholder, data, domain}) {
     const userRef = useRef();
@@ -29,11 +26,6 @@ function SearchBar({placeholder, data, domain}) {
         }
     };
 
-    const clearInput = () => {
-        setFilteredData([]);
-        setQuery("");
-    };
-
     const domainUrl = domain;
 
 
@@ -48,13 +40,6 @@ function SearchBar({placeholder, data, domain}) {
                     ref={userRef}
                     onChange={handleFilter}
                 />
-                <div className="searchIcon">
-                    {filteredData.length === 0 ? (
-                        <SearchIcon/>
-                    ) : (
-                        <CloseIcon id="clearBtn" onClick={clearInput}/>
-                    )}
-                </div>
             </div>
 
 

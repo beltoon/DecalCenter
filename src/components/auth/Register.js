@@ -95,7 +95,7 @@ function Register() {
 
     return (
         <>
-              <section className="page-container">
+            <section className="page-container">
 
                 <p ref={errRef} className={errorMessage ? "errmsg" : "offscreen"}
                    aria-live="assertive">{errorMessage}</p>
@@ -118,7 +118,6 @@ function Register() {
                             onBlur={() => setUserFocus(false)}
                         />
                         <p id="uidnote" className={userFocus && username && !validName ? "instructions" : "offscreen"}>
-                            {/*<FontAwesomeIcon icon={faInfoCircle} />*/}
                             4 to 24 characters.<br/>
                             Must begin with a letter.<br/>
                             Letters, numbers, underscores, hyphens allowed.
@@ -152,7 +151,6 @@ function Register() {
                             onBlur={() => setPwdFocus(false)}
                         />
                         <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
-                            {/*<FontAwesomeIcon icon={faInfoCircle} />*/}
                             8 to 24 characters.<br/>
                             Must include uppercase and lowercase letters, a number and a special character.<br/>
                             Allowed special characters: <span aria-label="exclamation mark">!</span> <span
@@ -162,7 +160,7 @@ function Register() {
                     </label>
 
                     <label htmlFor="confirm_pwd">
-                    <h4>Confirm Password:</h4>
+                        <h4>Confirm Password:</h4>
                         <input
                             type="password"
                             id="confirm_pwd"
@@ -176,7 +174,6 @@ function Register() {
                             onBlur={() => setMatchFocus(false)}
                         />
                         <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
-                            {/*<FontAwesomeIcon icon={faInfoCircle}/>*/}
                             Must match the first password input field.
                         </p>
                     </label>
