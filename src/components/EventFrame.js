@@ -36,13 +36,13 @@ function EventFrame({endpoint}) {
 
             {eventList.slice(0, 3).map((item) => {
                 return <a href={`http://localhost:3000/events/${item.id}`}
-                          id="decalLink" // ID AANPASSEN
+                          id="decalLink"
                           title="Click to decalId page"
                           key={item.id}>
                     <section className="content" key={item.id}>
 
-                        <h2>{item.eventDate}</h2>
-                        <h3>{item.name}</h3>
+                        <h3>{item.eventDate}</h3>
+                        <h4>{item.name}</h4>
 
                     </section>
                 </a>

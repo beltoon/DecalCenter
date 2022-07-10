@@ -13,18 +13,16 @@
 
 .nav-item {
     position: absolute;
-    justify-content: center;
-    flex-direction: column;
     flex: 1 0 auto;
-    margin: 20px;
+    margin: 20px 0;
+
     text-align: center;
-    width: 30%;
-    top: 180px;
+    top: 185px;
 }
 
 .nav-item a {
     padding: 8px;
-    font-size: x-large;
+    font-size: large;
     color: var(--black);
 }
 

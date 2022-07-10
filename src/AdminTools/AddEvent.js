@@ -39,7 +39,7 @@ function AddEvent() {
                 <form onSubmit={addEvent}>
                     <h3>Add Event to database</h3>
                     <label htmlFor="event-name">
-                        Event name:
+                        <h4>Event name:</h4>
                         <input
                             type="text"
                             name="event-name-field"
@@ -50,7 +50,7 @@ function AddEvent() {
                     </label>
 
                     <label htmlFor="car-brand">
-                        Car Brand:
+                        <h4>Car Brand:</h4>
                         <input
                             type="text"
                             name="car-brand-field"
@@ -61,7 +61,7 @@ function AddEvent() {
                     </label>
 
                     <label htmlFor="car-type">
-                        Car Type:
+                        <h4>Car Type:</h4>
                         <input
                             type="text"
                             name="car-type"

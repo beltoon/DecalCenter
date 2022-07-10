@@ -30,7 +30,7 @@ function NavBar() {
                         {isAuth ?
                             <NavLink to="/profile" exact activeClassName="active-link">Profile</NavLink>
                             :
-                            <NavLink to="/Register" exact activeClassName="active-link">Profile</NavLink>
+                            <NavLink to="/Register" exact activeClassName="active-link">Register</NavLink>
                         }
 
                         {isAuth ? <NavLink to="/"

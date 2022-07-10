@@ -27,7 +27,7 @@ function HomePage() {
 
     return (
         <>
-            <div className="outer-content-container">
+            <div className="page-container">
 
                 <PageHeader page="Welcome to DecalCenter"
                             intro="Decal Center provides custom car decals to iRacing. Designed by the brands and available for everyone to use. Find the decal of your favorite brand, located perfectly for you car!"/>

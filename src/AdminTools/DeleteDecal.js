@@ -21,7 +21,7 @@ function DeleteDecal(){
             <form onSubmit={deleteDecal}>
                 <h3>Delete Livery from database</h3>
                 <label htmlFor="delete-decal">
-                    Decal Id:
+                    <h4>Decal Id:</h4>
                     <input
                         type="text"
                         name="delete-decal"

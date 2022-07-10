@@ -1,6 +1,5 @@
 .page-container {
   width: 1400px;
-  /* Jup, dit is bad practise maar houdt de code overzichtelijk voor de tutorial: */
   margin: 30px auto;
 }
 

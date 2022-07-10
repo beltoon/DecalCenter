@@ -95,13 +95,11 @@ function Register() {
 
     return (
         <>
-              <section className="inner-content-container">
+              <section className="page-container">
 
                 <p ref={errRef} className={errorMessage ? "errmsg" : "offscreen"}
                    aria-live="assertive">{errorMessage}</p>
                 <h1>Register</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id
-                    molestias qui quo unde?</p>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">
                         <h4>Username:</h4>

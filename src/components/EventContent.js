@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import './Content.css';
 import placeholder from "../assets/coming soon.png";
 
 function EventContent( {endpoint} ) {
@@ -22,7 +21,7 @@ function EventContent( {endpoint} ) {
     }, [endpoint]);
 
     return (
-        <section className="content-card">
+        <section>
             {content &&
                 <>
 

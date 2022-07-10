@@ -38,15 +38,10 @@ function ImageRequestPage() {
         formData.append("series", series);
         formData.append("Car", id);
 
-        // hier nog user toevoegen (creator)
-
-
         console.log(series)
         console.log(id)
 
         try {
-            // verstuur ons formData object en geef in de header aan dat het om een form-data type gaat
-            // Let op: we wijzigen nu ALTIJD de afbeelding voor student 1001, als je een andere student wil kiezen of dit dynamisch wil maken, pas je de url aan!
             const result = await axios.post(`http://localhost:8080/decals/file`, formData,
                 {
                     headers: {
@@ -76,7 +71,9 @@ function ImageRequestPage() {
     }, []);
 
     return (
-        <article>
+
+
+        <article className="page-container">
             {addSucces === true && <p>Decal has been added!</p>}
             <form onSubmit={sendImage}
             >

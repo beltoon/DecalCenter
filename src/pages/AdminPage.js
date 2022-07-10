@@ -12,11 +12,11 @@ function AdminPage() {
     const {user} = useContext(AuthContext);
 
     return (
-        <div className="outer-content-container">
+
         <RoleBasedComponent
             role={user.role}
             supportedRoles={["ROLE_ADMIN"]}>
-            <div className=".inner-content-container">
+            <div className="page-container">
                 <PageHeader page="ADMIN PAGE" intro="Available for those who make the world a better place"/>
 
                 <AddCar/>
@@ -29,7 +29,7 @@ function AdminPage() {
 
             </div>
         </RoleBasedComponent>
-        </div>
+
     )
 }
 

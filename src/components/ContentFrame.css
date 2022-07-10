@@ -7,7 +7,7 @@
     padding: 40px 0;
     margin-left: auto;
     margin-right: auto;
-    color: white;
+    color: var(--white);
 }
 
 .content {
@@ -15,8 +15,8 @@
     color: var(--black);
     text-shadow: var(--black);
     font-size: x-large;
-    height: 150px;
-    width: 400px;
+    height: 5em;
+    width: 15em;
     background-color: var(--grey);
     margin: 1rem 1rem;
     padding: 0.5rem;

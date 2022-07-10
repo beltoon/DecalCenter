@@ -62,7 +62,7 @@ function Login() {
 
     return (
         <>
-            <section className="app">
+            <section className="page-container">
                 <p ref={errRef} className={errorMessage ? "errormessage" : "offscreen"}
                    aria-live="assertive">{errorMessage}</p>
                 <h1>Inloggen</h1>

@@ -40,7 +40,7 @@ function AddCar() {
                 <form onSubmit={addCar}>
                     <h3>Add Car to database</h3>
                     <label htmlFor="car-name">
-                        Car name:
+                        <h4>Car name:</h4>
                         <input
                             type="text"
                             name="car-name-field"
@@ -51,7 +51,7 @@ function AddCar() {
                     </label>
 
                     <label htmlFor="car-brand">
-                        Car Brand:
+                        <h4>Car Brand:</h4>
                         <input
                             type="text"
                             name="car-brand-field"
@@ -62,7 +62,7 @@ function AddCar() {
                     </label>
 
                     <label htmlFor="car-type">
-                        Car Type:
+                        <h4>Car Type:</h4>
                         <input
                             type="text"
                             name="car-type"
@@ -72,7 +72,7 @@ function AddCar() {
                             onChange={(e) => setCarType(e.target.value)}/>
                     </label>
                     <label htmlFor="car-category">
-                        Car Category:
+                        <h4>Car Category:</h4>
                         <input
                             type="text"
                             name="car-category"

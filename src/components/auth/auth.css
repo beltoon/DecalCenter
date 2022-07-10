@@ -1,9 +1,3 @@
-.login-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .instructions {
     font-size: 0.75rem;
     border-radius: 0.5rem;
@@ -23,33 +17,10 @@
     left: -9999px;
 }
 
-.hide {
-    display: none;
-}
-
-.valid {
-    color: limegreen;
-    margin-left: 0.25rem;
-}
-
-.invalid {
-    color: red;
-    margin-left: 0.25rem;
-}
-
 .errormessage {
     background-color: lightpink;
-    color: firebrick;
+    color: var(--primary);
     font-weight: bold;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
-}
-
-.line {
-    display: inline-block;
-}
-
-.form-button {
-left: auto;
-    right: auto;
 }

@@ -22,7 +22,7 @@ function DeleteCar() {
             <form onSubmit={deleteCar}>
                 <h3>Delete Car from database</h3>
                 <label htmlFor="delete-car">
-                    Car Id:
+                    <h4>Car Id:</h4>
                     <input
                         type="text"
                         name="delete-car"

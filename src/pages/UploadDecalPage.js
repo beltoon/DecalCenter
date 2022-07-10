@@ -8,7 +8,7 @@ function UploadDecalPage() {
     return (
         <>
         <div className="page-container">
-            <PageHeader page="UPLOAD" intro="Snel een beetje"/>
+            <PageHeader page="UPLOAD" intro="Share your decals with the rest of the community!"/>
 
              <ImageRequestPage/>
 
